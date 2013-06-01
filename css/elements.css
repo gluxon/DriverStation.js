@@ -1,0 +1,33 @@
+input[type="radio"] {
+	display: none;
+}
+
+input[type="radio"] + label::before {
+	width: 8px; height: 8px;
+	margin: 4px 5px 0 0;
+
+	background-color: #bdc3c7;
+	border-radius: 100%;
+
+	display: block;
+	content: "";
+	float: left;
+
+	border: 2px solid #3498db;
+
+	cursor: pointer;
+}
+
+input[type="radio"] + label:hover:before {
+	box-shadow: 0 0 2px 0 rgba(0,0,0, 0.9) inset;
+}
+	
+input[type="radio"]:checked + label::before {
+	background-color: #3498db;
+	border: 2px solid #3498db;
+	box-shadow: 0 0 2px 0 rgba(0,0,0, 0.8) inset;
+}
+
+input[type="radio"] + label {
+	cursor: pointer;
+}

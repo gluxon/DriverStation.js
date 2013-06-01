@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<title>DriverStation.js</title>
+<link rel="stylesheet" type="text/css" href="css/mainstyle.css" />
+<script type='text/javascript' src='http://code.jquery.com/jquery-2.0.2.js'></script>
+<script type="text/javascript" src="js/states.js"></script>
+</head>
+
+<body>
+
+<div id="container">
+
+	<div id="tabs">
+		<div id="tab_operation" selected="true">
+			<h2>Operation</h2>
+		</div>
+		<div id="tab_diagnostics">
+			<h2>Diagnostics</h2>
+		</div>
+		<div id="tab_setup">
+			<h2>Setup</h2>
+		</div>
+		<div id="tab_io">
+			<h2>I/O</h2>
+		</div>
+		<div id="tab_charts">
+			<h2>Charts</h2>
+		</div>
+	</div>
+
+	<div id="content">
+		<div id="operation">
+			<div class="collumn">
+				<div id="robot_status">
+					<div id="battery">Volts: 0.00</div>
+					<div id="connections">
+						<p id="communications" on="true">Communications</p>
+						<p id="robot-code" on="true">Robot Code</p>
+						<p id="joysticks">Joysticks</p>
+					</div>
+				</div>
+				<div id="mode">
+					<p>Teleoperated</p>
+					<p>Disabled</p>
+				</div>
+			</div>
+			<div class="collumn">
+				<div id="mode_select">
+					<input type="radio" name="mode" value="Teleoperated" id="1" checked>
+						<label for="1">Teleoperated</label><br />
+					<input type="radio" name="mode" value="Autonomous" id="2">
+						<label for="2">Autonomous</label><br />
+					<input type="radio" name="mode" value="Practice" id="3">
+						<label for="3">Practice</label><br />
+					<input type="radio" name="mode" value="Test" id="4">
+						<label for="4">Test</label>
+				</div>
+				<div id="trigger">Enable</div>
+			</div>
+			<div class="collumn">
+				<div id="time">
+					<p>Elapsed Time: 0:00.0</p>
+				</div>
+			</div>
+			<div class="collumn">
+				<div id="user-messages">
+					<p>User Messages:</p>
+					<div id="textbox">H! This is a message.</div>
+				</div>
+			</div>
+		</div>
+		<div id="diagnostics" class="hidden">
+			<p>We're not done with page yet. Sorry. :(</p>
+		</div>
+		<div id="setup" class="hidden">
+			<p>We're not done with page yet. Sorry. :(</p>
+		</div>
+		<div id="io" class="hidden">
+			<p>We're not done with page yet. Sorry. :(</p>
+		</div>
+		<div id="charts" class="hidden">
+			<p>We're not done with page yet. Sorry. :(</p>
+		</div>
+	</div>
+
+</div>
+</body>
+
+</html>
