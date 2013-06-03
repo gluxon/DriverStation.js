@@ -8,6 +8,9 @@
     "url": "https://github.com/gluxon/node-driverstation.git"
   },
   "main": "index.html",
+  "dependencies" : {
+    "driverstation" : "0.2.x"
+  },
   "window": {
     "toolbar": false,
     "width": 980,
