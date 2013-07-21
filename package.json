@@ -9,7 +9,8 @@
   },
   "main": "index.html",
   "dependencies" : {
-    "driverstation" : "0.2.x"
+    "driverstation" : "0.2.x",
+    "js-yaml": "2.1.x"
   },
   "window": {
     "toolbar": false,

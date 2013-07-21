@@ -1,9 +1,14 @@
+var events = require('events');
+
 function States() {
   this.enabled = false;
   this.currentTab = "operation";
 
   this.triggerHook();
   this.tabSwitchHook();
+
+  this.event = new events.EventEmitter();
+  console.log(this.event);
 }
 
 States.prototype.isEnabled = function() {
@@ -15,15 +20,19 @@ States.prototype.currentTab = function() {
 };
 
 States.prototype.triggerHook = function() {
+  var self = this;
+
   $("#trigger").click(function() {
-    if (!this.enabled) {
+    if (!self.enabled) {
       $("#trigger").attr("enabled", "true");
       $("#trigger").text("Disable");
-      this.enabled = true;
+      self.event.emit("enable");
+      self.enabled = true;
     } else {
       $("#trigger").removeAttr("enabled");
       $("#trigger").text("Enable");
-      this.enabled = false;
+      self.event.emit("disable");
+      self.enabled = false;
     }
   });
 };

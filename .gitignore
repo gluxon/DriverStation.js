@@ -8,3 +8,6 @@ node_modules
 .project
 .buildpath
 .settings
+
+# Configuration
+config/settings.yaml
