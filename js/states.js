@@ -33,17 +33,25 @@ States.prototype.triggerHook = function() {
     }
 
     if (!self.enabled) {
-      $("#trigger").attr("enabled", "true");
-      $("#trigger").text("Disable");
-      self.event.emit("enable");
-      self.enabled = true;
+      self.setEnabled();
     } else {
-      $("#trigger").removeAttr("enabled");
-      $("#trigger").text("Enable");
-      self.event.emit("disable");
-      self.enabled = false;
+      self.setDisabled();
     }
   });
+};
+
+States.prototype.setEnabled = function() {
+  $("#trigger").attr("enabled", "true");
+  $("#trigger").text("Disable");
+  this.event.emit("enable");
+  this.enabled = true;
+};
+
+States.prototype.setDisabled = function() {
+  $("#trigger").removeAttr("enabled");
+  $("#trigger").text("Enable");
+  this.event.emit("disable");
+  this.enabled = false;
 };
 
 States.prototype.tabSwitchHook = function() {
@@ -83,6 +91,7 @@ States.prototype.enableTrigger = function() {
 States.prototype.disableTrigger = function() {
 	$('#trigger').removeAttr("ready");
 	this.ready = false;
+	this.setDisabled();
 };
 
 States.prototype.enableCommunicationsLED = function() {
