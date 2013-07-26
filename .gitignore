@@ -10,4 +10,4 @@ node_modules
 .settings
 
 # Configuration
-config/settings.yaml
+#config/settings.yaml

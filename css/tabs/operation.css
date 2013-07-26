@@ -92,12 +92,19 @@
 	padding: 6px 10px;
 	border-radius: 6px;
 
-	background-color: #27ae60;
-
 	text-align: center;
 	font-size: 18px;
 
+	color: rgba(255,255,255, 0.2);
+	box-shadow: 0 0 0 1px rgba(39, 174, 96, 0.3) inset;
+
 	transition: background-color 0.2s;
+}
+
+#operation #trigger[ready] {
+	box-shadow: none;
+	color: rgba(255,255,255, 0.65);
+	background-color: rgb(39, 174, 96);
 }
 
 #operation #trigger[enabled] {
