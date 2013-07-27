@@ -23,14 +23,17 @@ fs.exists(SETTINGS_FILE, function(exists) {
 
 onload = function() {
   states = new States();
+  dstimer = new DSTimer();
 
   // Send the enable signal when "enable" is pressed
   states.event.on('enable', function() {
     driverstation.enable();
+    dstimer.start();
   });
 
   states.event.on('disable', function() {
     driverstation.disable();
+    dstimer.stop();
   });
 
   driverstation.start({
@@ -46,5 +49,9 @@ onload = function() {
   driverstation.connection.on('disconnect', function() {
     states.disableCommunicationsLED();
     states.disableTrigger();
+  });
+
+  driverstation.connection.on('robotData', function(robotData) {
+    writeToLCD(robotData.userDsLcdData);
   });
 };
