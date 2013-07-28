@@ -2,3 +2,24 @@
 	margin: 0; padding: 0;
 	text-align: center;
 }
+
+#setup #setup_teamID {
+	width: 130px; height: 30px;
+	text-align: center;
+
+	color: rgba(255,255,255, 0.7);
+	font-size: 21px;
+
+	background-color: rgba(0,0,0, 0.4);
+	box-shadow: 0 0 1px 1px rgba(0,0,0, 0.1) inset;
+	border: 1px solid rgba(0,0,0, 0.6);
+
+	border-radius: 3px;
+}
+
+#setup #setup_teamID:focus {
+	-webkit-apearance: none;
+	box-shadow: none !important;
+	outline: none;
+	border: 1px solid rgba(27,142,159, 0.45);
+}
