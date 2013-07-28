@@ -112,7 +112,7 @@
 }
 
 #operation #time {
-	width: 140px; height: 165px;
+	width: 150px; height: 165px;
 	margin-left: 15px;
 	padding: 6px 10px;
 
@@ -137,7 +137,7 @@
 }
 
 #user-messages #textbox {
-	width: 435px; height: 150px;
+	width: 425px; height: 140px;
 	padding: 3px 5px;
 	border-radius: 4px;
 
