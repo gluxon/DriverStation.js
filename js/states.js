@@ -13,7 +13,6 @@ function States() {
   this.ready = false;
 
   this.event = new events.EventEmitter();
-  console.log(this.event);
 }
 
 States.prototype.isEnabled = function() {
@@ -28,7 +27,7 @@ States.prototype.triggerHook = function() {
   var self = this;
 
   $("#trigger").click(function() {
-    if (self.ready == false) {
+    if (self.ready === false) {
       return;
     }
 
