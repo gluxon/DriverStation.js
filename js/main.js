@@ -11,7 +11,7 @@ var SETTINGS_FILE = './config/settings.yaml';
 // Check if settings file exists
 fs.exists(SETTINGS_FILE, function(exists) {
   if (exists) {
-    settings = require(SETTINGS_FILE);
+    var settings = require(SETTINGS_FILE);
     if (settings.debug) {
       win.showDevTools();
     }
@@ -22,6 +22,8 @@ fs.exists(SETTINGS_FILE, function(exists) {
 });
 
 onload = function() {
+  var settings = require(SETTINGS_FILE);
+
   states = new States();
   dstimer = new DSTimer();
 
@@ -37,7 +39,7 @@ onload = function() {
   });
 
   driverstation.start({
-    teamID: 178
+    teamID: settings.teamID
   });
 
   // Turn on/off LEDs on events
