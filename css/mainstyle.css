@@ -10,6 +10,7 @@
 @import url(tabs/setup.css);
 @import url(tabs/io.css);
 @import url(tabs/charts.css);
+@import url(tabs/about.css);
 
 body {
 	margin: 0; padding: 0;

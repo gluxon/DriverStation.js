@@ -71,6 +71,9 @@ States.prototype.tabSwitchHook = function() {
   $("#tab_charts").click(function() {
     self.tabSwitch("charts");
   });
+  $("#tab_about").click(function() {
+    self.tabSwitch("about");
+  });
 };
 
 States.prototype.tabSwitch = function(tab) {

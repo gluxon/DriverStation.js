@@ -26,6 +26,7 @@ onload = function() {
 
   states = new States();
   dstimer = new DSTimer();
+  hookLinks();
 
   // Send the enable signal when "enable" is pressed
   states.event.on('enable', function() {

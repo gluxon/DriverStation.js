@@ -9,6 +9,7 @@
 <script type="text/javascript" src="js/states.js"></script>
 <script type="text/javascript" src="js/utilities.js"></script>
 <script type="text/javascript" src="js/dstimer.js"></script>
+<script type="text/javascript" src="js/links.js"></script>
 </head>
 
 <body>
@@ -30,6 +31,9 @@
 		</div>
 		<div id="tab_charts">
 			<h2>Charts</h2>
+		</div>
+		<div id="tab_about">
+			<h2>About</h2>
 		</div>
 	</div>
 
@@ -79,13 +83,21 @@
 		</div>
 		<div id="setup" class="hidden">
 			<p>Team Number</p>
-			<input id="setup_teamID"></textarea>
+			<input id="setup_teamID"></input>
 		</div>
 		<div id="io" class="hidden">
 			<p>We're not done with page yet. Sorry. :(</p>
 		</div>
 		<div id="charts" class="hidden">
 			<p>We're not done with page yet. Sorry. :(</p>
+		</div>
+		<div id="about" class="hidden">
+			<p>This open source FRC robot control application<br /> was created by
+			<span class="link" id="178_homepage">Team 178, The Second Law Enforcers.</span></p>
+			<p>We challenge you to <span class="link" id="dreamfirst">Dream, Explore, Aspire</span></p>
+			<p>Contributors:<br />
+				<span class="link" id="contrib_gluxon">@gluxon</span>
+			</p>
 		</div>
 	</div>
 

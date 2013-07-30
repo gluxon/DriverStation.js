@@ -1,3 +1,20 @@
+.link {
+	color: #598dc8;
+	text-decoration: none;
+
+	cursor: pointer;
+
+	transition: 0.2s color linear;
+}
+
+.link:hover {
+	color: #66a5ec;
+}
+
+.link:active {
+	color: #3a75b1;
+}
+
 input[type="radio"] {
 	display: none;
 }
@@ -21,7 +38,7 @@ input[type="radio"] + label::before {
 input[type="radio"] + label:hover:before {
 	box-shadow: 0 0 2px 0 rgba(0,0,0, 0.9) inset;
 }
-	
+
 input[type="radio"]:checked + label::before {
 	background-color: #3498db;
 	border: 2px solid #3498db;
