@@ -10,12 +10,7 @@ var SETTINGS_FILE = './config/settings.yaml';
 
 // Check if settings file exists
 fs.exists(SETTINGS_FILE, function(exists) {
-  if (exists) {
-    var settings = require(SETTINGS_FILE);
-    if (settings.debug) {
-      win.showDevTools();
-    }
-  } else {
+  if (!exists) {
     alert("Settings file could not be loaded. Closing.");
     process.exit(0);
   }
@@ -27,6 +22,7 @@ onload = function() {
   states = new States();
   dstimer = new DSTimer();
   hookLinks();
+  hookDebug();
 
   // Send the enable signal when "enable" is pressed
   states.event.on('enable', function() {
