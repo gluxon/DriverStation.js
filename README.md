@@ -4,11 +4,11 @@ An Open Source FRC Driver Station.
 
 ![DriverStation.js](http://i.imgur.com/vMrjbTg.png)
 
-# Downloads
+## Downloads
 
 Downloadable installers will be available at the first beta release.
 
-# Compile from Source
+## Compile from Source
 
 Compiling from source can be found in the [node-webkit documentation](https://github.com/rogerwang/node-webkit/wiki/How-to-package-and-distribute-your-apps). 
 You still have to run *npm install* in the cloned git repository before
