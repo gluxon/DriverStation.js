@@ -10,7 +10,6 @@
   "main": "index.html",
   "dependencies" : {
     "driverstation" : "0.4.x",
-    "js-yaml": "2.1.x"
   },
   "window": {
     "toolbar": false,
