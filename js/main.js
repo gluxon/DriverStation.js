@@ -24,7 +24,7 @@ onload = function() {
   });
 
   driverstation.start({
-    teamID: settings.teamID
+    teamID: localStorage.teamID
   });
 
   // Turn on/off LEDs on events
