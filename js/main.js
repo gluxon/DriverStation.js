@@ -41,4 +41,8 @@ onload = function() {
   driverstation.connection.on('robotData', function(robotData) {
     writeToLCD(robotData.userDsLcdData);
   });
+
+  setup.on('teamID_change', function(teamID) {
+    driverstation.setTeamID(teamID);
+  });
 };

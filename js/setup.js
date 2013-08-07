@@ -1,7 +1,14 @@
+var util = require("util");
+var events = require("events");
+
 function Setup() {
+  events.EventEmitter.call(this);
+
   this.appendTeamID();
   this.hookTeamID();
 }
+
+util.inherits(Setup, events.EventEmitter);
 
 /**
  * Add the last teamID back on startup
@@ -32,4 +39,5 @@ Setup.prototype.hookTeamID = function() {
 
 Setup.prototype.setTeamID = function(teamID) {
   localStorage.teamID = teamID;
+  this.emit('teamID_change', teamID);
 };
