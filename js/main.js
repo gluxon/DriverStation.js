@@ -8,6 +8,7 @@ var fs = require('fs');
 onload = function() {
   states = new States();
   dstimer = new DSTimer();
+  setup = new Setup();
   hookLinks();
   hookDebug();
 
