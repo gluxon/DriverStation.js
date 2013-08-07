@@ -35,6 +35,10 @@ Setup.prototype.hookTeamID = function() {
       self.setTeamID($('#setup_teamID').val());
     }
   });
+
+  $('#setup_teamID').focusout(function() {
+    self.setTeamID($('#setup_teamID'));
+  });
 };
 
 Setup.prototype.setTeamID = function(teamID) {
