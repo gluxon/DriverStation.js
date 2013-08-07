@@ -5,6 +5,11 @@ var driverstation = require('driverstation');
 
 var fs = require('fs');
 
+// Default teamID to 0
+if (typeof localStorage.teamID === 'undefined') {
+  localStorage.teamID = 0;
+}
+
 onload = function() {
   states = new States();
   dstimer = new DSTimer();
