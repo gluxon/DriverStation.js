@@ -9,7 +9,7 @@
   },
   "main": "index.html",
   "dependencies" : {
-    "driverstation" : "0.4.x"
+    "driverstation" : "0.5.x"
   },
   "window": {
     "toolbar": false,

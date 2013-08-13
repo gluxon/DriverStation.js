@@ -6,6 +6,11 @@ function Setup() {
 
   this.appendTeamID();
   this.hookTeamID();
+
+  //Default teamID to blank
+  if (!localStorage.teamID) {
+    localStorage.teamID = "";
+  }
 }
 
 util.inherits(Setup, events.EventEmitter);
@@ -14,7 +19,9 @@ util.inherits(Setup, events.EventEmitter);
  * Add the last teamID back on startup
  */
 Setup.prototype.appendTeamID = function() {
-  $('#setup_teamID').val(localStorage.teamID);
+  if (localStorage.teamID) {
+    $('#setup_teamID').val(localStorage.teamID);
+  }
 };
 
 Setup.prototype.hookTeamID = function() {
@@ -22,7 +29,7 @@ Setup.prototype.hookTeamID = function() {
 
   $('#setup_teamID').keypress(function(e) {
     if (e.charCode < 48 | e.charCode > 57) {
-    // We only want numbers
+      // We only want numbers
       e.preventDefault();
     }
     if ($('#setup_teamID').val().length == 4) {
@@ -30,18 +37,22 @@ Setup.prototype.hookTeamID = function() {
       e.preventDefault();
     }
     if (e.charCode == 13) {
-    // Enter was pressed
+      // Enter was pressed
       $('#setup_teamID').blur(); // remove focus
       self.setTeamID($('#setup_teamID').val());
     }
   });
 
   $('#setup_teamID').focusout(function() {
-    self.setTeamID($('#setup_teamID'));
+    self.setTeamID($('#setup_teamID').val());
   });
 };
 
 Setup.prototype.setTeamID = function(teamID) {
+  if (localStorage.teamID === Number(teamID)) {
+    return;
+  }
+
   localStorage.teamID = teamID;
-  this.emit('teamID_change', teamID);
+  this.emit('teamID_change', Number(teamID));
 };
