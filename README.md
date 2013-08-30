@@ -6,7 +6,9 @@ An Open Source FRC Driver Station.
 
 ## Downloads
 
-Downloadable installers will be available at the first beta release.
+v0.2.2
+
+Windows: https://www.dropbox.com/s/z13bm9sa1b7rn87/driverstation.js-0.2.2.win32.SFX.exe
 
 ## Compile from Source
 
