@@ -12,4 +12,8 @@ function hookLinks() {
   $("#contrib_gluxon").click(function() {
     gui.Shell.openExternal("https://twitter.com/@gluxon");
   });
+
+  $("#contrib_innoying").click(function() {
+    gui.Shell.openExternal("https://github.com/innoying");
+  });
 }

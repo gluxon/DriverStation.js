@@ -3,9 +3,13 @@
 	text-align: center;
 }
 
+#about p {
+	maring: 0; padding: 0;
+}
+
 #about #debug {
-	margin: 0 5px 5px 0;
-	float: right;
+	position: absolute;
+	top: 220px; left: 825px;
 }
 
 #about #debug:after {

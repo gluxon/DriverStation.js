@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "author": "Brandon Cheng <gluxon@gluxon.com>",
   "description": "An open source alternative FRC Driver Station",
+  "contributors": [ 
+    {
+      "name": "Luke Young",
+      "email": "luke@innoying.com",
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/gluxon/node-driverstation.git"
