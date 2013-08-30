@@ -23,7 +23,7 @@ MD5: d6ee99a693249b8b6ed1c52bcd646c89
 Coming soon
 
 Note: The Linux packages may not work on Ubuntu 13.04+ due to issues with libudev.
-Look at [The solution of lacking libudev.so.0(https://github.com/rogerwang/node-webkit/wiki/The-solution-of-lacking-libudev.so.0) for details on how to fix this.
+Look at [The solution of lacking libudev.so.0](https://github.com/rogerwang/node-webkit/wiki/The-solution-of-lacking-libudev.so.0) for details on how to fix this.
 
 ## Compile from Source
 
