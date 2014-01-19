@@ -9,18 +9,43 @@ onload = function() {
   states = new States();
   dstimer = new DSTimer();
   setup = new Setup();
+  diagnostics = new Diagnostics();
   hookLinks();
   hookDebug();
 
+  var robotCode = false;
+
+  var practiceAutonomousTime = 10;
+  var practiceTeleopTime = 140;
+  var practiceTimeout = null;
+
   // Send the enable signal when "enable" is pressed
   states.event.on('enable', function() {
-    driverstation.enable();
+    var mode = getCurrentMode();
+
+    if (mode == 'Practice')
+    {
+        mode = 'Autonomous';
+        practiceTimeout = setTimeout(function() {
+            driverstation.enable('Teleoperated');
+
+            practiceTimeout = setTimeout(function() {
+                driverstation.disable();
+                dstimer.stop();
+            }, practiceTeleopTime * 1000);
+        }, practiceAutonomousTime * 1000);
+    }
+    driverstation.enable(mode);
+
     dstimer.start();
+    updateModeDisplay(true);
   });
 
   states.event.on('disable', function() {
     driverstation.disable();
     dstimer.stop();
+    clearTimeout(practiceTimeout);
+    updateModeDisplay(false);
   });
 
   driverstation.start({
@@ -30,21 +55,45 @@ onload = function() {
   // Turn on/off LEDs on events
   driverstation.on('connect', function() {
     states.enableCommunicationsLED();
-    states.enableTrigger();
   });
 
   driverstation.on('disconnect', function() {
     states.disableCommunicationsLED();
+    states.disableRobotCodeLED();
     states.disableTrigger();
+    clearTimeout(practiceTimeout);
   });
 
   driverstation.on('robotData', function(robotData) {
+    if (robotData['robotCode'] != robotCode)
+    {
+        if (robotData['robotCode'])
+        {
+            states.enableRobotCodeLED();
+            states.enableTrigger();
+        }
+        else
+        {
+            states.disableRobotCodeLED();
+        }
+
+        robotCode = robotData['robotCode'];
+    }
+
     writeToLCD(robotData.userDsLcdData);
+    if (robotData.batteryVolts != '00.00')
+    {
+        writeVoltage(robotData.batteryVolts);
+    }
   });
 
   setup.on('teamID_change', function(teamID) {
     driverstation.setTeamID(teamID, function(err) {
-      if (err) console.log(err);
+      if (err) console.error(err);
     });
+  });
+
+  diagnostics.on('reboot', function() {
+	driverstation.reboot();
   });
 };
