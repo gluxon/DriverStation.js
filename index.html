@@ -83,6 +83,15 @@
 		</div>
 		<div id="diagnostics" class="hidden">
 			<p>We're not done with page yet. Sorry. :(</p>
+			<div>
+				<form>
+					<p>If you are getting inaccurate values for Robot Code, you can reset the test:<br>
+					Currently, there should be:</p>
+					<input type="radio" value="empty" id="code-empty" name="robot-code"><label for="code-empty"> No Robot Code (more accurate)</label><br>
+					<input type="radio" value="full" id="code-full" name="robot-code"><label for="code-full">Robot Code</label><br>
+					<input type="submit" value="Reset Value">
+				</form>
+			</div>
 			<button id="reboot">Reboot cRIO</button>
 		</div>
 		<div id="setup" class="hidden">
