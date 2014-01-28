@@ -14,9 +14,9 @@ util.inherits(Diagnostics, events.EventEmitter);
  * Listen for reboot button
  */
 Diagnostics.prototype.hookRebootButton = function() {
-	self = this;
+  self = this;
   $('#reboot').click(function() {
-	  self.emit('reboot');
+    self.emit('reboot');
   });
 };
 
@@ -24,14 +24,14 @@ Diagnostics.prototype.hookRebootButton = function() {
  * Listen for Robot Code reset
  */
 Diagnostics.prototype.hookRobotCodeReset = function() {
-	self = this;
+  self = this;
   $('#diagnostics form').submit(function() {
-	  var val = $(this).find('input[type=radio]:checked').val();
-	  if ( ! val)
-	  {
-		  return;
-	  }
-	  val = (val == 'full');
-	  self.emit('resetRobotCode', val);
+    var val = $(this).find('input[type=radio]:checked').val();
+    if ( ! val)
+    {
+      return;
+    }
+    val = (val == 'full');
+    self.emit('resetRobotCode', val);
   });
 };

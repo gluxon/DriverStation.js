@@ -20,7 +20,6 @@ onload = function() {
   var practiceTimeout = null;
 
   var freeMemory = Number(localStorage.freeMemory);
-  console.log('Free Memory: ' + freeMemory);
   var hasCode = true;
   driverstation.setFreeMemory(freeMemory);
 
@@ -30,15 +29,15 @@ onload = function() {
 
     if (mode == 'Practice')
     {
-        mode = 'Autonomous';
-        practiceTimeout = setTimeout(function() {
-            driverstation.enable('Teleoperated');
+      mode = 'Autonomous';
+      practiceTimeout = setTimeout(function() {
+        driverstation.enable('Teleoperated');
 
-            practiceTimeout = setTimeout(function() {
-                driverstation.disable();
-                dstimer.stop();
-            }, practiceTeleopTime * 1000);
-        }, practiceAutonomousTime * 1000);
+        practiceTimeout = setTimeout(function() {
+          driverstation.disable();
+          dstimer.stop();
+        }, practiceTeleopTime * 1000);
+      }, practiceAutonomousTime * 1000);
     }
     driverstation.enable(mode);
 
@@ -72,38 +71,38 @@ onload = function() {
   driverstation.on('robotData', function(robotData) {
     if (robotData['robotCode'] != robotCode)
     {
-        if (robotData['robotCode'])
-        {
-            states.enableRobotCodeLED();
-            states.enableTrigger();
-        }
-        else
-        {
-            states.disableRobotCodeLED();
-			states.disableTrigger();
-        }
+      if (robotData['robotCode'])
+      {
+        states.enableRobotCodeLED();
+        states.enableTrigger();
+      }
+      else
+      {
+        states.disableRobotCodeLED();
+        states.disableTrigger();
+      }
 
-        robotCode = robotData['robotCode'];
+      robotCode = robotData['robotCode'];
     }
 
     // If we don't have a value for the amount of free memory, assume that
     // robot code is loaded and guess the amount of free memory without a
     // program would be 10 higher. This is likely to be error prone.
     if ( ! freeMemory)
-	{
-		freeMemory = robotData['freeMemory'];
-		if (hasCode)
-		{
-			freeMemory += 10;
-		}
-		window.localStorage.freeMemory = freeMemory;
-		driverstation.setFreeMemory(freeMemory);
-	}
+    {
+      freeMemory = robotData['freeMemory'];
+      if (hasCode)
+      {
+        freeMemory += 10;
+      }
+      window.localStorage.freeMemory = freeMemory;
+      driverstation.setFreeMemory(freeMemory);
+    }
 
     writeToLCD(robotData.userDsLcdData);
     if (robotData.batteryVolts != '00.00')
     {
-        writeVoltage(robotData.batteryVolts);
+      writeVoltage(robotData.batteryVolts);
     }
   });
 
@@ -114,11 +113,11 @@ onload = function() {
   });
 
   diagnostics.on('reboot', function() {
-	driverstation.reboot();
+    driverstation.reboot();
   });
 
   diagnostics.on('resetRobotCode', function(currentlyHasCode) {
-	  freeMemory = null;
-	  hasCode = currentlyHasCode;
+    freeMemory = null;
+    hasCode = currentlyHasCode;
   });
 };
