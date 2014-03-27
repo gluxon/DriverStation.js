@@ -3,15 +3,13 @@
   text-align: center;
 }
 
-#content #diagnostics #reboot
-{
+#content #diagnostics #reboot {
   position: absolute;
   bottom: 10px;
   right: 10px;
 }
 
-#content #diagnostics div
-{
+#content #diagnostics div {
   text-align: left;
   float: left;
 }

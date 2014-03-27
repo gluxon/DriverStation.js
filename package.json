@@ -1,12 +1,16 @@
 {
   "name": "DriverStation.js",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "author": "Brandon Cheng <gluxon@gluxon.com>",
   "description": "An open source alternative FRC Driver Station",
   "contributors": [ 
     {
       "name": "Luke Young",
       "email": "luke@innoying.com"
+    },
+    {
+      "name": "FRC2539",
+      "email": "kryptoncougars2539@gmail.com"
     }
   ],
   "repository": {
@@ -15,7 +19,7 @@
   },
   "main": "index.html",
   "dependencies" : {
-    "driverstation" : "0.5.x"
+    "driverstation" : "0.6.x"
   },
   "window": {
     "toolbar": false,
