@@ -27,7 +27,7 @@ Look at [The solution of lacking libudev.so.0](https://github.com/rogerwang/node
 
 ## Compile from Source
 
-Compiling from source can be found in the [node-webkit documentation](https://github.com/rogerwang/node-webkit/wiki/How-to-package-and-distribute-your-apps). 
+Compiling from source can be found in the [node-webkit documentation](https://github.com/rogerwang/node-webkit/wiki/How-to-package-and-distribute-your-apps).
 You still have to run *npm install* in the cloned git repository before
 packaging. Otherwise, DriverStation.js will be unresponsive because of
 JavaScript crashing from dependency errors.
@@ -41,6 +41,11 @@ $ npm install
 DriverStation.js is distributed under the [MPL 2.0](http://www.mozilla.org/MPL/2.0/).
 
 ## Changelog
+
+### 0.3
+These changes are from FRC 2539, the Krypton Cougars. Many thanks to them!
+- Add reboot cRIO button
+- Robot Code detection and control to reset detection
 
 ### 0.2
 - Working enable/disable of robot
