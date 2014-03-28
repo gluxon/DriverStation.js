@@ -20,7 +20,8 @@ MD5: ea1e8de1cd807a50c5c189e9b449f18a
 MD5: d6ee99a693249b8b6ed1c52bcd646c89
 
 **OS X**  
-Coming soon
+[DriverStation.js-v0.3-osx-ia32.zip](http://ubuntuone.com/40BcjlrEUXERddrzrpMbHO) [34.6 MB download]
+MD5: f459cd11696fe0041eed17c15194be2f
 
 Note: The Linux packages may not work on Ubuntu 13.04+ due to issues with libudev.
 Look at [The solution of lacking libudev.so.0](https://github.com/rogerwang/node-webkit/wiki/The-solution-of-lacking-libudev.so.0) for details on how to fix this.
