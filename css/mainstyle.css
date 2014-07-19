@@ -1,5 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
-
 @import url(elements.css);
 
 @import url(tabs.css);
@@ -11,6 +9,13 @@
 @import url(tabs/io.css);
 @import url(tabs/charts.css);
 @import url(tabs/about.css);
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(open_sans.woff) format('woff');
+}
 
 body {
 	margin: 0; padding: 0;
