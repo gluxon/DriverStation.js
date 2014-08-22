@@ -1,156 +1,156 @@
 #operation #robot_status {
-	width: 135px; height: 90px;
-	padding: 6px 10px;
+  width: 135px; height: 90px;
+  padding: 6px 10px;
 }
 
 #robot_status p {
-	margin: 0; padding: 0;
+  margin: 0; padding: 0;
 }
 
 #robot_status #voltage {
-	font-size: 16px;
-	margin-bottom: 5px;
+  font-size: 16px;
+  margin-bottom: 5px;
 }
 
 #robot_status #connections {
-	font-size: 14px;
+  font-size: 14px;
 }
 
 #connections #communications::before {
-	width: 10px; height: 10px;
-	margin: 5px 5px 0 0;
+  width: 10px; height: 10px;
+  margin: 5px 5px 0 0;
 
-	background-color: #e74c3c;
-	border-radius: 100%;
+  background-color: #e74c3c;
+  border-radius: 100%;
 
-	display: block;
-	content: "";
-	float: left;
+  display: block;
+  content: "";
+  float: left;
 }
 
 #connections #communications[on]::before {
-	background-color: #2ecc71;
+  background-color: #2ecc71;
 }
 
 #connections #robot-code::before {
-	width: 10px; height: 10px;
-	margin: 5px 5px 0 0;
+  width: 10px; height: 10px;
+  margin: 5px 5px 0 0;
 
-	background-color: #e74c3c;
-	border-radius: 100%;
+  background-color: #e74c3c;
+  border-radius: 100%;
 
-	display: block;
-	content: "";
-	float: left;
+  display: block;
+  content: "";
+  float: left;
 }
 
 #connections #robot-code[on]::before {
-	background-color: #2ecc71;
+  background-color: #2ecc71;
 }
 
 #connections #joysticks::before {
-	width: 10px; height: 10px;
-	margin: 5px 5px 0 0;
+  width: 10px; height: 10px;
+  margin: 5px 5px 0 0;
 
-	background-color: #e74c3c;
-	border-radius: 100%;
+  background-color: #e74c3c;
+  border-radius: 100%;
 
-	display: block;
-	content: "";
-	float: left;
+  display: block;
+  content: "";
+  float: left;
 }
 
 #connections #joysticks[on]::before {
-	background-color: #2ecc71;
+  background-color: #2ecc71;
 }
 
 #operation #mode {
-	width: 135px; height: 50px;
-	margin-top: 12px;
-	padding: 6px 10px;
+  width: 135px; height: 50px;
+  margin-top: 12px;
+  padding: 6px 10px;
 }
 
 #mode p {
-	margin: 0; padding: 0;
+  margin: 0; padding: 0;
 }
 
 #operation #mode_select {
-	width: 120px; height: 85px;
-	margin-left: 15px;
-	padding: 6px 10px;
+  width: 120px; height: 85px;
+  margin-left: 15px;
+  padding: 6px 10px;
 
-	font-size: 14px;
+  font-size: 14px;
 }
 
 #mode_select p {
-	margin: 0; padding: 0;
+  margin: 0; padding: 0;
 }
 
 #operation #trigger {
-	width: 100px; height: 30px;
-	margin-top: 26px; margin-left: 24px;
-	padding: 6px 10px;
-	border-radius: 6px;
+  width: 100px; height: 30px;
+  margin-top: 26px; margin-left: 24px;
+  padding: 6px 10px;
+  border-radius: 6px;
 
-	text-align: center;
-	font-size: 18px;
+  text-align: center;
+  font-size: 18px;
 
-	color: rgba(255,255,255, 0.2);
-	box-shadow: 0 0 0 1px rgba(39, 174, 96, 0.3) inset;
+  color: rgba(255,255,255, 0.2);
+  box-shadow: 0 0 0 1px rgba(39, 174, 96, 0.3) inset;
 
-	transition: background-color 0.2s;
+  transition: background-color 0.2s;
 }
 
 #operation #trigger[ready] {
-	box-shadow: none;
-	color: rgba(255,255,255, 0.65);
-	background-color: rgb(39, 174, 96);
+  box-shadow: none;
+  color: rgba(255,255,255, 0.65);
+  background-color: rgb(39, 174, 96);
 }
 
 #operation #trigger[enabled] {
-	background-color: #c0392b;
+  background-color: #c0392b;
 }
 
 #operation #time {
-	width: 150px; height: 165px;
-	margin-left: 15px;
-	padding: 6px 10px;
+  width: 150px; height: 165px;
+  margin-left: 15px;
+  padding: 6px 10px;
 
-	font-size: 14px;
+  font-size: 14px;
 }
 
 #time p {
-	margin: 0; padding: 0;
+  margin: 0; padding: 0;
 }
 
 #operation #user-messages {
-	width: 140px; height: 165px;
-	margin: -2px 0 0 15px; padding: 0;
+  width: 140px; height: 165px;
+  margin: -2px 0 0 15px; padding: 0;
 
-	background: none;
+  background: none;
 
-	font-size: 13px;
+  font-size: 13px;
 }
 
 #user-messages p {
-	margin: 0 0 4px 0; padding: 0;
+  margin: 0 0 4px 0; padding: 0;
 }
 
 #user-messages #textbox {
-	width: 425px; height: 140px;
-	padding: 3px 5px;
-	border-radius: 4px;
+  width: 425px; height: 140px;
+  padding: 3px 5px;
+  border-radius: 4px;
 
-	background: #95a5a6;
+  background: #95a5a6;
 
-	color: rgba(0,0,0, 1);
+  color: rgba(0,0,0, 1);
 
-	-webkit-touch-callout: default;
-	-webkit-user-select: text;
-	-khtml-user-select: text;
-	-moz-user-select: text;
-	-ms-user-select: text;
-	user-select: text;
+  -webkit-touch-callout: default;
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 
-	cursor: text;
+  cursor: text;
 }

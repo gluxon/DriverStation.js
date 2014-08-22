@@ -1,6 +1,9 @@
 # Editor backup files
 *~
 
+# OS X
+.DS_Store
+
 # Node.js libraries and modules
 node_modules
 

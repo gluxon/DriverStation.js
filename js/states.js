@@ -16,11 +16,11 @@ function States() {
 }
 
 States.prototype.isEnabled = function() {
-	return this.enabled;
+  return this.enabled;
 };
 
 States.prototype.currentTab = function() {
-	return this.currentTab;
+  return this.currentTab;
 };
 
 States.prototype.triggerHook = function() {
@@ -86,42 +86,42 @@ States.prototype.tabSwitch = function(tab) {
 };
 
 States.prototype.enableTrigger = function() {
-	$('#trigger').attr("ready", true);
-	this.ready = true;
+  $('#trigger').attr("ready", true);
+  this.ready = true;
 };
 
 States.prototype.disableTrigger = function() {
-	$('#trigger').removeAttr("ready");
-	this.ready = false;
-	this.setDisabled();
+  $('#trigger').removeAttr("ready");
+  this.ready = false;
+  this.setDisabled();
 };
 
 States.prototype.enableCommunicationsLED = function() {
-	$('#communications').attr("on", true);
-	this.communications = true;
+  $('#communications').attr("on", true);
+  this.communications = true;
 };
 
 States.prototype.enableRobotCodeLED = function() {
-	$('#robot-code').attr("on", true);
-	this.robotCode = true;
+  $('#robot-code').attr("on", true);
+  this.robotCode = true;
 };
 
 States.prototype.enableJoysticksLED = function() {
-	$('#joysticks').attr("on", true);
-	this.joysticks = true;
+  $('#joysticks').attr("on", true);
+  this.joysticks = true;
 };
 
 States.prototype.disableCommunicationsLED = function() {
-	$('#communications').removeAttr("on");
-	this.communications = false;
+  $('#communications').removeAttr("on");
+  this.communications = false;
 };
 
 States.prototype.disableRobotCodeLED = function() {
-	$('#robot-code').removeAttr("on");
-	this.robotCode = false;
+  $('#robot-code').removeAttr("on");
+  this.robotCode = false;
 };
 
 States.prototype.disableJoysticksLED = function() {
-	$('#joysticks').removeAttr("on");
-	this.joysticks = false;
+  $('#joysticks').removeAttr("on");
+  this.joysticks = false;
 };

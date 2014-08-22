@@ -27,8 +27,7 @@ onload = function() {
   states.event.on('enable', function() {
     var mode = getCurrentMode();
 
-    if (mode == 'Practice')
-    {
+    if (mode == 'Practice') {
       mode = 'Autonomous';
       practiceTimeout = setTimeout(function() {
         driverstation.enable('Teleoperated');
@@ -69,30 +68,23 @@ onload = function() {
   });
 
   driverstation.on('robotData', function(robotData) {
-    if (robotData['robotCode'] != robotCode)
-    {
-      if (robotData['robotCode'])
-      {
+    if (robotData['robotCode'] != robotCode) {
+      if (robotData['robotCode']) {
         states.enableRobotCodeLED();
         states.enableTrigger();
-      }
-      else
-      {
+      } else {
         states.disableRobotCodeLED();
         states.disableTrigger();
       }
-
       robotCode = robotData['robotCode'];
     }
 
     // If we don't have a value for the amount of free memory, assume that
-    // robot code is loaded and guess the amount of free memory without a
+    // robot code is loaded and guess that the amount of free memory without a
     // program would be 10 higher. This is likely to be error prone.
-    if ( ! freeMemory)
-    {
+    if (!freeMemory) {
       freeMemory = robotData['freeMemory'];
-      if (hasCode)
-      {
+      if (hasCode) {
         freeMemory += 10;
       }
       window.localStorage.freeMemory = freeMemory;
@@ -100,8 +92,7 @@ onload = function() {
     }
 
     writeToLCD(robotData.userDsLcdData);
-    if (robotData.batteryVolts != '00.00')
-    {
+    if (robotData.batteryVolts != '00.00') {
       writeVoltage(robotData.batteryVolts);
     }
   });

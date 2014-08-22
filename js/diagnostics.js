@@ -27,8 +27,7 @@ Diagnostics.prototype.hookRobotCodeReset = function() {
   self = this;
   $('#diagnostics form').submit(function() {
     var val = $(this).find('input[type=radio]:checked').val();
-    if ( ! val)
-    {
+    if (!val) {
       return;
     }
     val = (val == 'full');

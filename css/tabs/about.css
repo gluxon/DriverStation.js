@@ -1,17 +1,17 @@
 #content #about {
-	margin: 0; padding: 0;
-	text-align: center;
+  margin: 0; padding: 0;
+  text-align: center;
 }
 
 #about p {
-	maring: 0; padding: 0;
+  maring: 0; padding: 0;
 }
 
 #about #debug {
-	position: absolute;
-	top: 220px; left: 825px;
+  position: absolute;
+  top: 220px; left: 825px;
 }
 
 #about #debug:after {
-	content: " \00bb";
+  content: " \00bb";
 }

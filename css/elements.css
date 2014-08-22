@@ -1,50 +1,66 @@
 .link {
-	color: #598dc8;
-	text-decoration: none;
+  color: #598dc8;
+  text-decoration: none;
 
-	cursor: pointer;
+  cursor: pointer;
 
-	transition: 0.2s color linear;
+  transition: 0.2s color linear;
 }
 
 .link:hover {
-	color: #66a5ec;
+  color: #66a5ec;
 }
 
 .link:active {
-	color: #3a75b1;
+  color: #3a75b1;
+}
+
+input, select, textarea, button{
+  font: inherit;
+}
+
+button, input[type="submit"] {
+  padding: 5px 10px;
+  color: rgba(255,255,255, 0.7);
+  background-color: rgba(0,0,0, 0.3);
+  border: 1px solid rgba(0,0,0, 0.6);
+  border-radius: 4px;
+}
+
+button:active, input[type="submit"]:active {
+  background-color: rgba(0,0,0, 0.5);
 }
 
 input[type="radio"] {
-	display: none;
+  display: none;
 }
 
 input[type="radio"] + label::before {
-	width: 8px; height: 8px;
-	margin: 4px 5px 0 0;
+  width: 8px; height: 8px;
+  margin: 4px 5px 0 0;
 
-	background-color: #bdc3c7;
-	border-radius: 100%;
+  background-color: #bdc3c7;
+  border-radius: 100%;
 
-	display: block;
-	content: "";
-	float: left;
+  display: block;
+  content: "";
+  float: left;
 
-	border: 2px solid #3498db;
+  border: 2px solid #3498db;
 
-	cursor: pointer;
+  cursor: pointer;
 }
 
 input[type="radio"] + label:hover:before {
-	box-shadow: 0 0 2px 0 rgba(0,0,0, 0.9) inset;
+  box-shadow: 0 0 2px 0 rgba(0,0,0, 0.9) inset;
 }
 
 input[type="radio"]:checked + label::before {
-	background-color: #3498db;
-	border: 2px solid #3498db;
-	box-shadow: 0 0 2px 0 rgba(0,0,0, 0.8) inset;
+  background-color: #3498db;
+  border: 2px solid #3498db;
+  box-shadow: 0 0 2px 0 rgba(0,0,0, 0.8) inset;
 }
 
 input[type="radio"] + label {
-	cursor: pointer;
+  cursor: pointer;
 }

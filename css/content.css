@@ -1,20 +1,20 @@
 #content {
-	padding: 15px;
+  padding: 15px;
 }
 
 #content > div {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 #content > div > div > div {
-	background-color: rgba(0,0,0, 0.25);
-	border-radius: 4px;
+  background-color: rgba(0,0,0, 0.25);
+  border-radius: 4px;
 }
 
 #content .collumn {
-	float: left;
+  float: left;
 }
 
 .hidden {
-	display: none;
+  display: none;
 }
