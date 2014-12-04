@@ -37,6 +37,36 @@ JavaScript crashing from dependency errors.
 $ npm install
 ```
 
+After installing the required dependencies, it is likely manual work will need to be done to insure a functional application.
+
+### Compiling node-gamepad
+
+Due to node-gamepad using native files and the use of node-webkit instead of node, the pre-installed native may not work, below is the process for compiling the native from the Application Directory.
+
+``` bash
+$ cd node_modules/gamepad/
+$ ./node_modules/node-pre-gyp/bin/node-pre-gyp build --runtime=node-webkit --target=0.8.6
+```
+
+In the case of my system, I also needed the --python switch to specifiy my python2.7 executable
+
+### Running Unpackaged
+
+Run in the Application Directory.
+
+``` bash
+$ ./node_modules/nodewebkit/nodewebkit/nw ./
+```
+
+### Repairing Missing libudev.so.0
+
+Since node-webkit is installed in node_modules, the sed command can be used fairly easily to correct this issue. I assume you are starting at the Application Directory.
+
+``` bash
+$ cd node_modules/nodewebkit/nodewebkit/
+$ sed -i 's/udev\.so\.0/udev.so.1/g' nw
+```
+
 ## License
 
 DriverStation.js is distributed under the [MPL 2.0](http://www.mozilla.org/MPL/2.0/).

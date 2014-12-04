@@ -24,7 +24,8 @@
   "main": "index.html",
   "dependencies" : {
     "driverstation2" : "0.6.x",
-    "gamepad" : "1.0.x"
+    "gamepad" : "1.0.x",
+    "nodewebkit": "0.8.6"
   },
   "window": {
     "toolbar": false,
