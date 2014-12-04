@@ -43,6 +43,11 @@ DriverStation.js is distributed under the [MPL 2.0](http://www.mozilla.org/MPL/2
 
 ## Changelog
 
+### 0.4
+Project Copied by Gustave Michel III.
+- Joystick Support Added
+- Multi-Joystick Support Added
+
 ### 0.3
 These changes are from FRC 2539, the Krypton Cougars. Many thanks to them!
 - Add reboot cRIO button
