@@ -5,7 +5,7 @@
 .DS_Store
 
 # Node.js libraries and modules
-node_modules/gamepad
+node_modules
 
 # Eclipse project info
 .project
