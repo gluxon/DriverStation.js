@@ -1,7 +1,9 @@
 function DSTimer() {
+  this.timer;
 }
 
 DSTimer.prototype.start = function() {
+  this.stop(); //reset before starting in case of previous timer
   var self = this;
 
   this.startTime = new Date().getTime();
