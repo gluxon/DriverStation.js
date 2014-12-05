@@ -11,6 +11,7 @@ function States() {
   this.robotCode = false;
   this.joysticks = false;
   this.ready = false;
+  this.estop = false;
 
   this.event = new events.EventEmitter();
 }
@@ -30,27 +31,39 @@ States.prototype.triggerHook = function() {
     if (self.ready === false) {
       return;
     }
-
-    if (!self.enabled) {
-      self.setEnabled();
-    } else {
-      self.setDisabled();
+    if(!self.estop) { //E-Stop, RESTART ROBOT AND SOFTWARE!
+      if (!self.enabled) {
+        self.setEnabled();
+      } else {
+        self.setDisabled();
+      }
     }
   });
 };
 
 States.prototype.setEnabled = function() {
-  $("#trigger").attr("enabled", "true");
-  $("#trigger").text("Disable");
-  this.event.emit("enable");
-  this.enabled = true;
+  if(!this.estop) { //E-Stop, RESTART ROBOT AND SOFTWARE!
+    $("#trigger").attr("enabled", "true");
+    $("#trigger").text("Disable");
+    this.event.emit("enable");
+    this.enabled = true;
+  }
 };
 
 States.prototype.setDisabled = function() {
-  $("#trigger").removeAttr("enabled");
-  $("#trigger").text("Enable");
-  this.event.emit("disable");
-  this.enabled = false;
+  if(!this.estop) { //E-Stop, RESTART ROBOT AND SOFTWARE!
+    $("#trigger").removeAttr("enabled");
+    $("#trigger").text("Enable");
+    this.event.emit("disable");
+    this.enabled = false;
+  }
+};
+
+States.prototype.setEStop = function() {
+  $("#trigger").attr("enabled", "true");
+  $("#trigger").text("E-STOP");
+  this.event.emit("estop");
+  this.estop = true;
 };
 
 States.prototype.tabSwitchHook = function() {

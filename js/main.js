@@ -104,7 +104,18 @@ onload = function() {
   function map(self, from_min, from_max, to_min, to_max) {
     return ((to_max - to_min) * (self - from_min)) / (from_max - from_min) + to_min;
   }
-  /***************************Gamepad Code********************************/
+  /*************************End Gamepad Code******************************/
+  /***********************************************************************/
+  Mousetrap.bind('f1', function(e) {
+    states.setEnabled();
+  });
+  Mousetrap.bind('enter', function(e) {
+    states.setDisabled();
+  });
+  Mousetrap.bind('space', function(e) {
+    states.setEStop();
+  });
+  /***********************************************************************/
   
   // Send the enable signal when "enable" is pressed
   states.event.on('enable', function() {
@@ -129,6 +140,13 @@ onload = function() {
 
   states.event.on('disable', function() {
     driverstation.disable();
+    dstimer.stop();
+    clearTimeout(practiceTimeout);
+    updateModeDisplay(false);
+  });
+
+  states.event.on('estop', function() {
+    driverstation.estop();
     dstimer.stop();
     clearTimeout(practiceTimeout);
     updateModeDisplay(false);
