@@ -1,7 +1,7 @@
 var gui = require('nw.gui');
 var win = gui.Window.get();
 
-var driverstation = require('driverstation2');
+var driverstation = require('frc-driverstation');
 var gamepad = require('gamepad');
 
 var fs = require('fs');

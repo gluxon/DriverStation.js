@@ -24,7 +24,7 @@
   "main": "index.html",
   "dependencies" : {
     "nodewebkit": "0.8.6",
-    "driverstation2" : "0.6.x",
+    "frc-driverstation" : "0.6.x",
     "gamepad" : "1.0.x",
     "keypress": "0.2.x"
   },

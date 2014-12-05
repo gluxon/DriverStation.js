@@ -3,7 +3,7 @@
   text-align: center;
 }
 
-#setup #setup_teamID {
+#setup #team_number #setup_teamID {
   width: 130px; height: 30px;
   text-align: center;
 
@@ -17,9 +17,35 @@
   border-radius: 3px;
 }
 
-#setup #setup_teamID:focus {
+#setup #team_number #setup_teamID:focus {
   -webkit-apearance: none;
   box-shadow: none !important;
   outline: none;
   border: 1px solid rgba(27,142,159, 0.45);
+}
+
+#team_number {
+  width: 150px; height: 165px;
+  margin-right: 15px;
+  padding: 6px 10px;
+
+  font-size: 14px;
+}
+
+#team_number p {
+  margin: 0; padding: 0;
+  margin-bottom: 15px;
+}
+
+#joystick_config {
+  width: 200px; height: 165px;
+  margin-right: 15px;
+  padding: 6px 10px;
+
+  font-size: 14px;
+}
+
+#joystick_config p {
+  margin: 0; padding: 0;
+  margin-bottom: 15px;
 }
