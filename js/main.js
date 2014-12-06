@@ -6,6 +6,13 @@ var gamepad = require('gamepad');
 
 var fs = require('fs');
 
+var joystickIDs = [ //For allocating the Joystick IDs to the 4 used Joysticks
+    null,
+    null,
+    null,
+    null,
+  ];
+
 onload = function() {
   states = new States();
   dstimer = new DSTimer();
@@ -25,13 +32,6 @@ onload = function() {
   driverstation.setFreeMemory(freeMemory);
 
   /***************************Gamepad Code********************************/
-  var joystickIDs = [ //For allocating the Joystick IDs to the 4 used Joysticks
-    null,
-    null,
-    null,
-    null,
-  ];
-
   var numAxis = 6;
   var numButton = 12;
 
@@ -62,6 +62,7 @@ onload = function() {
   });
 
   gamepad.on("attach", function (id, state) {
+    console.log("attach: "+id+": "+state.description);
     for(var i = 0; i < 4; i++) {
       if(joystickIDs[i] == null) {
         joystickIDs[i] = id;
@@ -74,13 +75,15 @@ onload = function() {
           }
         }
         states.enableJoysticksLED(); //at least one joystick attached!
+        updateSelection();
         break; //allocation space found!
       }
     }
-    //set initial state, at least buttons...
+    updateSelection();
   });
 
   gamepad.on("remove", function (id) {
+    console.log("remove: "+id);
     if(joystickIDs.indexOf(id) > -1) {
       //Reset all States
       for(var i = 0; i < 6; i++) {
@@ -99,18 +102,26 @@ onload = function() {
         states.disableJoysticksLED();
       }
     }
+    updateSelection();
   });
   gamepad.init(); //at end so initial attach listeners are run
+  //map one range to another
   function map(self, from_min, from_max, to_min, to_max) {
     return ((to_max - to_min) * (self - from_min)) / (from_max - from_min) + to_min;
   }
+  //Update the list of joysticks and how they are allocated
+  
   /*************************End Gamepad Code******************************/
   /***********************************************************************/
   Mousetrap.bind('f1', function(e) {
-    states.setEnabled();
+    if(states.ready) { //Will Switch Modes only if Robot is connected
+      states.setEnabled();
+    }
   });
   Mousetrap.bind('enter', function(e) {
-    states.setDisabled();
+    if(states.ready) { //Will Switch Modes only if Robot is connected
+      states.setDisabled();
+    }
   });
   Mousetrap.bind('space', function(e) {
     states.setEStop();
@@ -204,6 +215,22 @@ onload = function() {
     });
   });
 
+  setup.on('joystick_change', function(joystickID, DeviceID) {
+    if(joystickIDs.indexOf(DeviceID) != -1) { //if set to another Joystick, remove it
+      joystickIDs[joystickIDs.indexOf(DeviceID)] = null;
+    }
+    //reset values
+    for(var i = 0; i < 6; i++) {
+      driverstation.FRCCommonControlData.joystickAxes[joystickID][i] = 0;
+    }
+    driverstation.FRCCommonControlData.joystickButtons[joystickID] = 0;
+    //attach
+    joystickIDs[joystickID] = DeviceID;
+
+    //update
+    updateSelection();
+  });
+
   diagnostics.on('reboot', function() {
     driverstation.reboot();
   });
@@ -213,3 +240,15 @@ onload = function() {
     hasCode = currentlyHasCode;
   });
 };
+function updateSelection() {
+    var data = [];
+    for(var i = 0; i < gamepad.numDevices(); i++) {
+      data[i] = {
+        deviceID:gamepad.deviceAtIndex(i).deviceID,
+        joystickID:((joystickIDs.indexOf(gamepad.deviceAtIndex(i).deviceID) != -1)? joystickIDs.indexOf(gamepad.deviceAtIndex(i).deviceID) : null),
+        description:gamepad.deviceAtIndex(i).description,
+
+      };
+    }
+    setup.generateJSSelect(data);
+  }
