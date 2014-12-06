@@ -32,6 +32,13 @@ onload = function() {
   driverstation.setFreeMemory(freeMemory);
 
   /***************************Gamepad Code********************************/
+  // var joystickIDs = [ //For allocating the Joystick IDs to the 4 used Joysticks
+  //   null,
+  //   null,
+  //   null,
+  //   null,
+  // ];
+
   var numAxis = 6;
   var numButton = 12;
 
@@ -51,6 +58,7 @@ onload = function() {
   gamepad.on("down", function (id, num) {
     if((joystickIDs.indexOf(id) > -1)&&(num < numButton)) {
       driverstation.FRCCommonControlData.joystickButtons[joystickIDs.indexOf(id)] ^= (0x1 << num);
+      setup.enableJoystickLED(joystickIDs.indexOf(id));
     }
   });
 
@@ -58,11 +66,13 @@ onload = function() {
   gamepad.on("up", function (id, num) {
     if((joystickIDs.indexOf(id) > -1)&&(num < numButton)) {
       driverstation.FRCCommonControlData.joystickButtons[joystickIDs.indexOf(id)] ^= (0x1 << num);
+      if(driverstation.FRCCommonControlData.joystickButtons[joystickIDs.indexOf(id)] == 0) {
+        setup.disableJoystickLED(joystickIDs.indexOf(id));
+      }
     }
   });
 
   gamepad.on("attach", function (id, state) {
-    console.log("attach: "+id+": "+state.description);
     for(var i = 0; i < 4; i++) {
       if(joystickIDs[i] == null) {
         joystickIDs[i] = id;
@@ -75,11 +85,11 @@ onload = function() {
           }
         }
         states.enableJoysticksLED(); //at least one joystick attached!
-        updateSelection();
+        updateSelectMenus();
         break; //allocation space found!
       }
     }
-    updateSelection();
+    updateSelectMenus();
   });
 
   gamepad.on("remove", function (id) {
@@ -102,7 +112,7 @@ onload = function() {
         states.disableJoysticksLED();
       }
     }
-    updateSelection();
+    updateSelectMenus();
   });
   gamepad.init(); //at end so initial attach listeners are run
   //map one range to another
@@ -110,7 +120,46 @@ onload = function() {
     return ((to_max - to_min) * (self - from_min)) / (from_max - from_min) + to_min;
   }
   //Update the list of joysticks and how they are allocated
-  
+  function updateSelectMenus() {
+    var data = [];
+    for(var i = 0; i < gamepad.numDevices(); i++) {
+      data[i] = {
+        deviceID:gamepad.deviceAtIndex(i).deviceID,
+        joystickID:((joystickIDs.indexOf(gamepad.deviceAtIndex(i).deviceID) != -1)? joystickIDs.indexOf(gamepad.deviceAtIndex(i).deviceID) : null),
+        description:gamepad.deviceAtIndex(i).description,
+
+      };
+    }
+    setup.generateSelectMenus(data);
+  }
+
+  //Event for Changing Joystick Allocation
+  setup.on('joystick_change', function(joystickID, DeviceID) {
+    if(joystickIDs.indexOf(DeviceID) != -1) { //if set to another Joystick, remove it
+      joystickIDs[joystickIDs.indexOf(DeviceID)] = null;
+    }
+    //reset values
+    for(var i = 0; i < 6; i++) {
+      driverstation.FRCCommonControlData.joystickAxes[joystickID][i] = 0;
+    }
+    driverstation.FRCCommonControlData.joystickButtons[joystickID] = 0;
+    //attach
+    joystickIDs[joystickID] = DeviceID;
+
+    //update
+    updateSelectMenus();
+    var joysticksLeft = false;
+    for(var i = 0; i < joystickIDs.length; i++) {
+      if(joystickIDs[i] != null) {
+        joysticksLeft = true;
+      }
+    }
+    if(!joysticksLeft) {
+      states.disableJoysticksLED();
+    } else {
+      states.enableJoysticksLED();
+    }
+  });
   /*************************End Gamepad Code******************************/
   /***********************************************************************/
   Mousetrap.bind('f1', function(e) {
@@ -215,22 +264,6 @@ onload = function() {
     });
   });
 
-  setup.on('joystick_change', function(joystickID, DeviceID) {
-    if(joystickIDs.indexOf(DeviceID) != -1) { //if set to another Joystick, remove it
-      joystickIDs[joystickIDs.indexOf(DeviceID)] = null;
-    }
-    //reset values
-    for(var i = 0; i < 6; i++) {
-      driverstation.FRCCommonControlData.joystickAxes[joystickID][i] = 0;
-    }
-    driverstation.FRCCommonControlData.joystickButtons[joystickID] = 0;
-    //attach
-    joystickIDs[joystickID] = DeviceID;
-
-    //update
-    updateSelection();
-  });
-
   diagnostics.on('reboot', function() {
     driverstation.reboot();
   });
@@ -240,15 +273,3 @@ onload = function() {
     hasCode = currentlyHasCode;
   });
 };
-function updateSelection() {
-    var data = [];
-    for(var i = 0; i < gamepad.numDevices(); i++) {
-      data[i] = {
-        deviceID:gamepad.deviceAtIndex(i).deviceID,
-        joystickID:((joystickIDs.indexOf(gamepad.deviceAtIndex(i).deviceID) != -1)? joystickIDs.indexOf(gamepad.deviceAtIndex(i).deviceID) : null),
-        description:gamepad.deviceAtIndex(i).description,
-
-      };
-    }
-    setup.generateJSSelect(data);
-  }

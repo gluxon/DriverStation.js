@@ -78,6 +78,8 @@ Project Copied by Gustave Michel III.
 - Support for Joysticks Added
 - Keybinds for F1-Enable, Enter-Disable, and Spacebar-EStop
 - Joystick Setup section to re-order Joysticks
+- Joystick Setup LED lights up when any button is pressed
+-- To idenfiy joysticks if you have multiple of the same type
 
 ### 0.3
 These changes are from FRC 2539, the Krypton Cougars. Many thanks to them!

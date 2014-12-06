@@ -60,36 +60,7 @@ Setup.prototype.setTeamID = function(teamID) {
 
 Setup.prototype.hookJoystickSetup = function() {
   var self = this;
-  $('#joystick_setup_0').change(function(e) {
-    console.log(e);
-    if(e.currentTarget.value == "null") {
-      var value = null;
-    } else {
-      var value = Number(e.currentTarget.value);
-    }
-    self.emit('joystick_change', Number(e.currentTarget.name), value);
-  });
-
-  $('#joystick_setup_1').change(function(e) {
-    console.log(e);
-    if(e.currentTarget.value == "null") {
-      var value = null;
-    } else {
-      var value = Number(e.currentTarget.value);
-    }
-    self.emit('joystick_change', Number(e.currentTarget.name), value);
-  });
-  $('#joystick_setup_2').change(function(e) {
-    console.log(e);
-    if(e.currentTarget.value == "null") {
-      var value = null;
-    } else {
-      var value = Number(e.currentTarget.value);
-    }
-    self.emit('joystick_change', Number(e.currentTarget.name), value);
-  });
-  $('#joystick_setup_3').change(function(e) {
-    console.log(e);
+  $('.joystick_setup').change(function(e) {
     if(e.currentTarget.value == "null") {
       var value = null;
     } else {
@@ -99,13 +70,23 @@ Setup.prototype.hookJoystickSetup = function() {
   });
 };
 
-Setup.prototype.generateJSSelect = function(data) {
+Setup.prototype.generateSelectMenus = function(data) {
   var html = ["","","",""];
   for(var i = 0; i < html.length; i++) {
-    html[i]+= "<option  value=\"null\"></option>";
+    html[i]+= "<option  value=\"null\">No Joystick</option>";
     for(var j = 0; j < data.length; j++) {
       html[i]+= "<option "+((data[j].joystickID == i)? "selected=\"selected\"" : "")+" value=\""+data[j].deviceID+"\" >"+data[j].description+"</option>"
     }
     $("#joystick_setup_"+i).html(html[i]);
   }
+};
+
+Setup.prototype.enableJoystickLED = function(joystickID) {
+  $('#joystick_setup_'+joystickID).parent().attr("on", true);
+  this.communications = true;
+};
+
+Setup.prototype.disableJoystickLED = function(joystickID) {
+  $('#joystick_setup_'+joystickID).parent().removeAttr("on");
+  this.communications = false;
 };

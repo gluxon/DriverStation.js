@@ -49,3 +49,23 @@
   margin: 0; padding: 0;
   margin-bottom: 15px;
 }
+
+#joystick_config div select {
+  max-width: 165px;
+}
+
+#joystick_config .joystick_config::before {
+  width: 10px; height: 10px;
+  margin: 5px 5px 0 0;
+
+  background-color: #e74c3c;
+  border-radius: 100%;
+
+  display: block;
+  content: "";
+  float: left;
+}
+
+#joystick_config .joystick_config[on]::before {
+  background-color: #2ecc71;
+}
