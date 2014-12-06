@@ -43,9 +43,9 @@ onload = function() {
   var numButton = 12;
 
   // Poll for Joystick events
-  setInterval(gamepad.processEvents, 16);
+  var joystick_update = setInterval(gamepad.processEvents, 16);
   // Scan for new Joysticks as a slower rate
-  setInterval(gamepad.detectDevices, 500);
+  var joystick_detect = setInterval(gamepad.detectDevices, 500);
 
   // Listen for move events on all gamepads
   gamepad.on("move", function (id, axis, value) {
@@ -82,6 +82,7 @@ onload = function() {
         for(var i = 0; i < state.buttonStates.length && i < numButton; i++) { //set initial button values
           if(state.buttonStates[i] == true) {
             driverstation.FRCCommonControlData.joystickButtons[joystickIDs.indexOf(id)] ^= (0x1 << i);
+            setup.enableJoystickLED(i);
           }
         }
         states.enableJoysticksLED(); //at least one joystick attached!
@@ -96,7 +97,7 @@ onload = function() {
     console.log("remove: "+id);
     if(joystickIDs.indexOf(id) > -1) {
       //Reset all States
-      for(var i = 0; i < 6; i++) {
+      for(var i = 0; i < numAxis; i++) {
         driverstation.FRCCommonControlData.joystickAxes[joystickIDs.indexOf(id)][i] = 0;
       }
       driverstation.FRCCommonControlData.joystickButtons[joystickIDs.indexOf(id)] = 0;
@@ -135,30 +136,59 @@ onload = function() {
 
   //Event for Changing Joystick Allocation
   setup.on('joystick_change', function(joystickID, DeviceID) {
-    if(joystickIDs.indexOf(DeviceID) != -1) { //if set to another Joystick, remove it
+    //clearInterval(joystick_update);
+
+    if(DeviceID != null && joystickIDs.indexOf(DeviceID) != -1) { //Handle Duplicates
+      setup.disableJoystickLED(joystickIDs.indexOf(DeviceID));
+      for(var i = 0; i < numAxis; i++) {
+        driverstation.FRCCommonControlData.joystickAxes[joystickIDs.indexOf(DeviceID)][i] = 0;
+      }
+      driverstation.FRCCommonControlData.joystickButtons[joystickIDs.indexOf(DeviceID)] = 0;
       joystickIDs[joystickIDs.indexOf(DeviceID)] = null;
     }
-    //reset values
-    for(var i = 0; i < 6; i++) {
-      driverstation.FRCCommonControlData.joystickAxes[joystickID][i] = 0;
-    }
-    driverstation.FRCCommonControlData.joystickButtons[joystickID] = 0;
     //attach
     joystickIDs[joystickID] = DeviceID;
 
-    //update
-    updateSelectMenus();
-    var joysticksLeft = false;
-    for(var i = 0; i < joystickIDs.length; i++) {
-      if(joystickIDs[i] != null) {
-        joysticksLeft = true;
+    //reset
+    setup.disableJoystickLED(joystickID);
+    for(var i = 0; i < numAxis; i++) {
+      driverstation.FRCCommonControlData.joystickAxes[joystickID][i] = 0;
+    }
+    driverstation.FRCCommonControlData.joystickButtons[joystickID] = 0;
+
+    //set
+    if(DeviceID != null) {
+      var state = null;
+      for(var i = 0; i < gamepad.numDevices(); i++) {
+        if(gamepad.deviceAtIndex(i).deviceID == DeviceID) {
+          state = gamepad.deviceAtIndex(i);
+          break;
+        }
+      }
+      for(var i = 0; i < state.axisStates.length && i < numAxis; i++) { //set initial joystick values
+        driverstation.FRCCommonControlData.joystickAxes[joystickIDs.indexOf(DeviceID)][i] = state.axisStates[i];
+      }
+      for(var i = 0; i < state.buttonStates.length && i < numButton; i++) { //set initial button values
+        if(state.buttonStates[i] == true) {
+          driverstation.FRCCommonControlData.joystickButtons[joystickIDs.indexOf(DeviceID)] ^= (0x1 << i);
+          setup.enableJoystickLED(joystickIDs.indexOf(DeviceID));
+        }
       }
     }
-    if(!joysticksLeft) {
-      states.disableJoysticksLED();
-    } else {
-      states.enableJoysticksLED();
+    var joysticks_left = false;
+    for(var i = 0; i < joystickIDs.length; i++) {
+      if(joystickIDs[i] != null) {
+        joysticks_left = true;
+        break;
+      }
     }
+    if(!joysticks_left) {
+      states.disableJoysticksLED();
+    }
+    updateSelectMenus();
+
+
+    //joystick_update = setInterval(gamepad.processEvents, 16);
   });
   /*************************End Gamepad Code******************************/
   /***********************************************************************/
