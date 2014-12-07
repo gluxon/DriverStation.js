@@ -94,7 +94,6 @@ onload = function() {
   });
 
   gamepad.on("remove", function (id) {
-    console.log("remove: "+id);
     if(joystickIDs.indexOf(id) > -1) {
       //Reset all States
       for(var i = 0; i < numAxis; i++) {
@@ -103,6 +102,7 @@ onload = function() {
       driverstation.FRCCommonControlData.joystickButtons[joystickIDs.indexOf(id)] = 0;
       //Unallocate Joystick
       joystickIDs[joystickIDs.indexOf(id)] = null;
+      //
       var joysticksLeft = false;
       for(var i = 0; i < joystickIDs.length; i++) {
         if(joystickIDs[i] != null) {
@@ -119,18 +119,20 @@ onload = function() {
     updateSelectMenus();
   });
   gamepad.init(); //at end so initial attach listeners are run
+
   //map one range to another
   function map(self, from_min, from_max, to_min, to_max) {
     return ((to_max - to_min) * (self - from_min)) / (from_max - from_min) + to_min;
   }
+
   //Update the list of joysticks and how they are allocated
   function updateSelectMenus() {
     var data = [];
     for(var i = 0; i < gamepad.numDevices(); i++) {
       data[i] = {
-        deviceID:gamepad.deviceAtIndex(i).deviceID,
-        joystickID:((joystickIDs.indexOf(gamepad.deviceAtIndex(i).deviceID) != -1)? joystickIDs.indexOf(gamepad.deviceAtIndex(i).deviceID) : null),
-        description:gamepad.deviceAtIndex(i).description,
+        deviceID: gamepad.deviceAtIndex(i).deviceID,
+        joystickID: ((joystickIDs.indexOf(gamepad.deviceAtIndex(i).deviceID) != -1)? joystickIDs.indexOf(gamepad.deviceAtIndex(i).deviceID) : null),
+        description: gamepad.deviceAtIndex(i).description,
 
       };
     }
@@ -139,7 +141,6 @@ onload = function() {
 
   //Event for Changing Joystick Allocation
   setup.on('joystick_change', function(joystickID, DeviceID) {
-    //clearInterval(joystick_update);
 
     if(DeviceID != null && joystickIDs.indexOf(DeviceID) != -1) { //Handle Duplicates
       setup.disableJoystickLED(joystickIDs.indexOf(DeviceID));
@@ -178,6 +179,7 @@ onload = function() {
         }
       }
     }
+
     var joysticks_left = false;
     for(var i = 0; i < joystickIDs.length; i++) {
       if(joystickIDs[i] != null) {
@@ -191,13 +193,10 @@ onload = function() {
       states.enableJoysticksLED();
     }
     updateSelectMenus();
-
-
-    //joystick_update = setInterval(gamepad.processEvents, 16);
   });
-  updateSelectMenus();
   /*************************End Gamepad Code******************************/
-  /***********************************************************************/
+  
+  /***************************Keybind Code********************************/
   Mousetrap.bind('f1', function(e) {
     if(states.ready) { //Will Switch Modes only if Robot is connected
       states.setEnabled();
@@ -211,7 +210,7 @@ onload = function() {
   Mousetrap.bind('space', function(e) {
     states.setEStop();
   });
-  /***********************************************************************/
+  /***************************End Keybind Code*****************************/
   
   // Send the enable signal when "enable" is pressed
   states.event.on('enable', function() {
