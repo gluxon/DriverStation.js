@@ -107,10 +107,13 @@ onload = function() {
       for(var i = 0; i < joystickIDs.length; i++) {
         if(joystickIDs[i] != null) {
           joysticksLeft = true;
+          break;
         }
       }
       if(!joysticksLeft) {
         states.disableJoysticksLED();
+      } else {
+        states.enableJoysticksLED();
       }
     }
     updateSelectMenus();
@@ -184,12 +187,15 @@ onload = function() {
     }
     if(!joysticks_left) {
       states.disableJoysticksLED();
+    } else {
+      states.enableJoysticksLED();
     }
     updateSelectMenus();
 
 
     //joystick_update = setInterval(gamepad.processEvents, 16);
   });
+  updateSelectMenus();
   /*************************End Gamepad Code******************************/
   /***********************************************************************/
   Mousetrap.bind('f1', function(e) {

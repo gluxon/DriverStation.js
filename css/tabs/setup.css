@@ -51,7 +51,20 @@
 }
 
 #joystick_config div select {
-  max-width: 165px;
+  width: 165px;
+  color: rgba(255,255,255, 0.7);
+
+  background-color: rgba(0,0,0, 0.4);
+  box-shadow: 0 0 1px 1px rgba(0,0,0, 0.1) inset;
+  border: 1px solid rgba(0,0,0, 0.6);
+
+  border-radius: 3px;
+}
+#joystick_config div select:focus {
+  -webkit-apearance: none;
+  box-shadow: none !important;
+  outline: none;
+  border: 1px solid rgba(27,142,159, 0.45);
 }
 
 #joystick_config .joystick_config::before {
