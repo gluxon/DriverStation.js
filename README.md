@@ -18,18 +18,18 @@ MD5:
 MD5: 
 
 [DriverStation.js.app-Linux64.zip](http://gustavemichel.com/OSCPDSPackages/DriverStation.js.app-Linux64.zip) [32.9 MB download]  
-MD5: 
+MD5: 505b2a63160ea3d5ab9dba2faf21d1c3
 
 **Linux with Libudev.s0.1 Fix**  
 [DriverStation.js.app-NLinux32.zip](github.com/gixxy/DriverStation.js)  [ MB download]
 MD5: 
 
 [DriverStation.js.app-NLinux64.zip](http://gustavemichel.com/OSCPDSPackages/DriverStation.js.app-NLinux64.zip) [32.9 MB download]
-MD5: 
+MD5: b197ad5f72b8a494029dad2f6e570fad
 
 **OS X**  
 [DriverStation.js.app-osxia32.zip](http://gustavemichel/OSCPDSPackages/DriverStation.js.app-osxia32.zip) [35.5 MB download]  
-MD5: 
+MD5: 36648e9784f921dc04d121ca244df6e8
 
 
 Note: The Linux packages may not work on Ubuntu 13.04+ due to issues with libudev.
