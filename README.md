@@ -10,19 +10,27 @@ An Open Source FRC Driver Station.
 v0.2.2
 
 **Windows**  
-[driverstation.js-0.2.2.win32.SFX.exe](http://ubuntuone.com/7Vt37YX2Hr8oyzJ6oydXgg) [15.1 MB download]  
-MD5: 9490c51028b7aada9670a8a1c7cfa16c
+[DriverStation.js.app-Windows32.zip](github.com/gixxy/DriverStation.js)  [ MB download] 
+MD5: 
 
 **Linux**  
-[driverstation.js-0.2.2-linux-ia32.tar.gz](http://ubuntuone.com/6c7cMCrfMJV4fn4lnYoRBu)  [29.0 MB download]  
-MD5: ea1e8de1cd807a50c5c189e9b449f18a
+[DriverStation.js.app-Linux32.zip](github.com/gixxy/DriverStation.js)  [ MB download]  
+MD5: 
 
-[driverstation.js-0.2.2-linux-x86_64.tar.gz](http://ubuntuone.com/3tjxxS7Q2Cnq4qga7vhdbD) [31.8 MB download]  
-MD5: d6ee99a693249b8b6ed1c52bcd646c89
+[DriverStation.js.app-Linux64.zip](http://gustavemichel.com/OSCPDSPackages/DriverStation.js.app-Linux64.zip) [32.9 MB download]  
+MD5: 
+
+**Linux with Libudev.s0.1 Fix**  
+[DriverStation.js.app-NLinux32.zip](github.com/gixxy/DriverStation.js)  [ MB download]
+MD5: 
+
+[DriverStation.js.app-NLinux64.zip](http://gustavemichel.com/OSCPDSPackages/DriverStation.js.app-NLinux64.zip) [32.9 MB download]
+MD5: 
 
 **OS X**  
-[DriverStation.js-v0.3-osx-ia32.zip](http://ubuntuone.com/0NkvZ5bMdZVVzeMZTqeepv) [28.4 MB download]  
-MD5: f459cd11696fe0041eed17c15194be2f
+[DriverStation.js.app-osxia32.zip](http://gustavemichel/OSCPDSPackages/DriverStation.js.app-osxia32.zip) [35.5 MB download]  
+MD5: 
+
 
 Note: The Linux packages may not work on Ubuntu 13.04+ due to issues with libudev.
 Look at [The solution of lacking libudev.so.0](https://github.com/rogerwang/node-webkit/wiki/The-solution-of-lacking-libudev.so.0) for details on how to fix this.
@@ -45,11 +53,16 @@ After installing the required dependencies, it is likely manual work will need t
 Due to node-gamepad using native files and the use of node-webkit instead of node, the pre-installed native may not work, below is the process for compiling the native from the Application Directory.
 
 ``` bash
+$ npm install -g node-gyp # May require Sudo
+$ npm install -g nw-gyp # May require Sudo
 $ cd node_modules/gamepad/
 $ ./node_modules/node-pre-gyp/bin/node-pre-gyp build --runtime=node-webkit --target=0.8.6
 ```
+On Linux you must have Python 2.7 installed as well as GCC.
+On Windows you must have the .Net Framework 2.0 SDK installed as well as Python 2.7.
+On Mac you must have XCode and Command Line Tools installed
 
-In the case of my system, I also needed the --python switch to specifiy my python2.7 executable
+In the case of my system, I needed the --python switch to specifiy my python2.7 executable
 
 ### Running Unpackaged
 
