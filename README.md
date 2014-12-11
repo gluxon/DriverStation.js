@@ -58,9 +58,7 @@ $ npm install -g nw-gyp # May require Sudo
 $ cd node_modules/gamepad/
 $ ./node_modules/node-pre-gyp/bin/node-pre-gyp build --runtime=node-webkit --target=0.8.6
 ```
-On Linux you must have Python 2.7 installed as well as GCC.
-On Windows you must have the .Net Framework 2.0 SDK installed as well as Python 2.7.
-On Mac you must have XCode and Command Line Tools installed
+Additional Platform Specific dependencies can be found on the [node-gyp]() github repo README.
 
 In the case of my system, I needed the --python switch to specifiy my python2.7 executable
 
@@ -92,7 +90,8 @@ These changes are from [Gustave Michel III](https://www.github.com/gixxy).
 - Support for Joysticks Added
 - Keybinds for F1-Enable, Enter-Disable, and Spacebar-EStop
 - Joystick Setup section to re-order Joysticks
-- Joystick Setup Identification LEDs. Light when any button is pressed.
+- Joystick Identification LEDs. Light when any button is pressed.
+- Currently Non-function Toggle for DriverStation Network Protocol
 
 ### 0.3
 These changes are from FRC 2539, the Krypton Cougars. Many thanks to them!

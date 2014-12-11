@@ -1,6 +1,9 @@
 var gui = require('nw.gui');
 var win = gui.Window.get();
 
+
+var driverstation_legacy = require('frc-driverstation');
+var driverstation_2015 = require('frc-driverstation');
 var driverstation = null; // = require('frc-driverstation');
 var gamepad = require('gamepad');
 
@@ -21,11 +24,13 @@ onload = function() {
     states.setDisabled(); //disable robot
 
     driverstation.disconnect();
+    driverstation.findTimer = null; //fix so DS can be "restarted" later
 
-    // TODO: Transfer settings and Joystick Data
-    // TODO: Setup IMPORT and EXPORT Methods for DS Module
+    var FRCCommonControlData = driverstation.FRCCommonControlData;
+    // TODO: Figure out anything else that needs to be transfered
 
     setup.setDSProtocol(setDriverStation(dsProtocol)); //used to set module and snap slider
+    driverstation.FRCCommonControlData = FRCCommonControlData;
     driverstation.setFreeMemory(freeMemory);
 
     driverstation.start({
@@ -42,11 +47,11 @@ onload = function() {
       case 2013:
       case 2014:
         dsProtocol = 2009;
-        driverstation = require('frc-driverstation');
+        driverstation = driverstation_legacy;
         break;
       case 2015:
         dsProtocol = 2015;
-        driverstation = require('frc-driverstation'); // TODO: Set to 2015 plugin when ready
+        driverstation = driverstation_2015; // TODO: Set to 2015 plugin when ready
         break;
       default:
         console.error("Invalid DriverStation Protocol Selected");
