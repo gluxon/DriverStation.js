@@ -1,17 +1,10 @@
 var gui = require('nw.gui');
 var win = gui.Window.get();
 
-var driverstation = require('frc-driverstation');
+var driverstation = null; // = require('frc-driverstation');
 var gamepad = require('gamepad');
 
 var fs = require('fs');
-
-var joystickIDs = [ //For allocating the Joystick IDs to the 4 used Joysticks
-    null,
-    null,
-    null,
-    null,
-  ];
 
 onload = function() {
   states = new States();
@@ -20,6 +13,49 @@ onload = function() {
   diagnostics = new Diagnostics();
   hookLinks();
   hookDebug();
+
+  /*********************DriverStation Protocol Code***************************/
+  setup.setDSProtocol(setDriverStation(localStorage.dsProtocol));
+  
+  setup.on("ds_protocol_change", function (dsProtocol) {
+    states.setDisabled(); //disable robot
+
+    driverstation.disconnect();
+
+    // TODO: Transfer settings and Joystick Data
+    // TODO: Setup IMPORT and EXPORT Methods for DS Module
+
+    setup.setDSProtocol(setDriverStation(dsProtocol)); //used to set module and snap slider
+    driverstation.setFreeMemory(freeMemory);
+
+    driverstation.start({
+      teamID: Number(localStorage.teamID) // not sure why this is being reset to a string
+    });
+  });
+
+  function setDriverStation(dsProtocol) {
+    switch(Number(dsProtocol)) {
+      case 2009:
+      case 2010:
+      case 2011:
+      case 2012:
+      case 2013:
+      case 2014:
+        dsProtocol = 2009;
+        driverstation = require('frc-driverstation');
+        break;
+      case 2015:
+        dsProtocol = 2015;
+        driverstation = require('frc-driverstation'); // TODO: Set to 2015 plugin when ready
+        break;
+      default:
+        console.error("Invalid DriverStation Protocol Selected");
+        dsProtocol = localStorage.dsProtocol; //default to previous
+        break;
+    }
+    return dsProtocol;
+  }
+  /********************End DriverStation Protocol Code*************************/
 
   var robotCode = false;
 
@@ -31,13 +67,14 @@ onload = function() {
   var hasCode = true;
   driverstation.setFreeMemory(freeMemory);
 
+
   /***************************Gamepad Code********************************/
-  // var joystickIDs = [ //For allocating the Joystick IDs to the 4 used Joysticks
-  //   null,
-  //   null,
-  //   null,
-  //   null,
-  // ];
+  var joystickIDs = [ //For allocating the Joystick IDs to the 4 used Joysticks
+    null,
+    null,
+    null,
+    null,
+  ];
 
   var numAxis = 6;
   var numButton = 12;

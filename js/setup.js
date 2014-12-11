@@ -7,10 +7,15 @@ function Setup() {
   this.appendTeamID();
   this.hookTeamID();
   this.hookJoystickSetup();
+  this.hookDSProtocol();
 
   //Default teamID to blank
   if (!localStorage.teamID) {
-    localStorage.teamID = "";
+    localStorage.teamID = ""; //Perhaps this is why it is resetting to a string?
+  }
+  //Default DriverStation Protocol to current
+  if(!localStorage.dsProtocol || localStorage.dsProtocol === null) {
+    localStorage.dsProtocol = 2009; // TODO: set to 2015 after January
   }
 }
 
@@ -89,4 +94,23 @@ Setup.prototype.enableJoystickLED = function(joystickID) {
 Setup.prototype.disableJoystickLED = function(joystickID) {
   $('#joystick_setup_'+joystickID).parent().removeAttr("on");
   this.communications = false;
+};
+
+Setup.prototype.hookDSProtocol = function() {
+  var self = this;
+  $('#ds_protocol').change(function(e) { //emits year of protocl (2009-2014=legacy; 2015=current;)
+    self.emit('ds_protocol_change', Number(e.currentTarget.value));
+  });
+}
+
+Setup.prototype.setDSProtocol = function(dsProtocol) {
+  if (localStorage.dsProtocol === Number(dsProtocol)) {
+    console.log("No Change");
+    return;
+  }
+  $("#ds_mode_"+localStorage.dsProtocol).removeAttr("on"); //not working?
+  
+  localStorage.dsProtocol = dsProtocol;
+  $("#ds_mode_"+localStorage.dsProtocol).attr("on", true);
+  $("#ds_protocol").val(localStorage.dsProtocol);
 };

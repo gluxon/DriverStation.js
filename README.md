@@ -10,9 +10,9 @@ An Open Source FRC Driver Station.
 v0.2.2
 
 **Windows**  
-[DriverStation.js.app-Windows32.zip](github.com/gixxy/DriverStation.js)  [ MB download] 
- MD5: 
-
+[DriverStation.js.app-Windows32.zip](github.com/gixxy/DriverStation.js)  [ MB download]  
+ MD5:
+ 
 **Linux**  
 [DriverStation.js.app-Linux32.zip](github.com/gixxy/DriverStation.js)  [ MB download]  
  MD5: 
@@ -88,7 +88,7 @@ DriverStation.js is distributed under the [MPL 2.0](http://www.mozilla.org/MPL/2
 ## Changelog
 
 ### 0.4
-Project Copied by Gustave Michel III.
+These changes are from [Gustave Michel III](https://www.github.com/gixxy).
 - Support for Joysticks Added
 - Keybinds for F1-Enable, Enter-Disable, and Spacebar-EStop
 - Joystick Setup section to re-order Joysticks

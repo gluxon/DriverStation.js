@@ -25,16 +25,93 @@
 }
 
 #team_number {
-  width: 150px; height: 165px;
+  width: 150px; height: 70px; /* 165 px */
   margin-right: 15px;
   padding: 6px 10px;
-
+  margin-bottom: 5px;
   font-size: 14px;
 }
 
 #team_number p {
   margin: 0; padding: 0;
   margin-bottom: 15px;
+}
+
+#driverstation_mode {
+  width: 150px; height: 70px; /* 165 px */
+  margin-right: 15px;
+  padding: 6px 10px;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+#driverstation_mode p {
+  margin: 0; padding: 0;
+}
+
+#driverstation_mode div {
+  margin: 0; padding: 0;
+  margin-bottom: 5px;
+}
+
+#driverstation_mode input {
+  width: 130px; height: 20px;
+  text-align: center;
+
+  color: rgba(255,255,255, 0.7);
+
+  background-color: rgba(0,0,0, 0.4);
+  box-shadow: 0 0 1px 1px rgba(0,0,0, 0.1) inset;
+  border: 1px solid rgba(0,0,0, 0.6);
+
+  border-radius: 3px;
+}
+
+#driverstation_mode input {
+  -webkit-appearance: none;
+  width: 130px; height: 20px;
+  text-align: center;
+
+  color: rgba(255,255,255, 0.7);
+
+  background-color: rgba(0,0,0, 0.4);
+  box-shadow: 0 0 1px 1px rgba(0,0,0, 0.1) inset;
+  border: 1px solid rgba(0,0,0, 0.6);
+
+  border-radius: 3px;
+}
+
+#driverstation_mode input:focus {
+  color: rgba(255,255,255, 0.7);
+  -webkit-apearance: none;
+  outline: none;
+  border: 1px solid rgba(27,142,159, 0.45);
+  border: 1px solid rgba(0,0,0, 0.6);
+}
+
+#driverstation_mode input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 60px;
+  border-radius: 3px;
+  background: rgba(150,150,150, 0.2);
+  cursor: pointer;
+  }
+
+#driverstation_mode .ds_mode::before {
+  width: 10px; height: 10px;
+  margin: 5px 5px 0 0;
+
+  background-color: #e74c3c;
+  border-radius: 100%;
+
+  display: block;
+  content: "";
+  float: left;
+}
+
+#driverstation_mode .ds_mode[on]::before {
+  background-color: #2ecc71;
 }
 
 #joystick_config {
@@ -71,7 +148,8 @@
   width: 10px; height: 10px;
   margin: 5px 5px 0 0;
 
-  background-color: #e74c3c;
+  background-color: #afafaf; /* #e74c3c */
+  border: 1px solid #808080;
   border-radius: 100%;
 
   display: block;
@@ -80,5 +158,6 @@
 }
 
 #joystick_config .joystick_config[on]::before {
-  background-color: #2ecc71;
+  background-color: #0d4471;
+  border: 1px solid #0d2451;
 }
