@@ -32,6 +32,8 @@ Diagnostics.prototype.hookRobotCodeReset = function() {
       return;
     }
     val = (val == 'full');
+    console.log("getting to it");
+    $(this).find('input[type=radio]:checked').removeAttr('checked');
     self.emit('resetRobotCode', val);
   });
 };
