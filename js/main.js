@@ -356,7 +356,6 @@ onload = function() {
   });
 
   diagnostics.on('resetRobotCode', function(currentlyHasCode) {
-    console.log("resetting");
     freeMemory = null;
     hasCode = currentlyHasCode;
   });
