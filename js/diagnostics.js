@@ -25,7 +25,8 @@ Diagnostics.prototype.hookRebootButton = function() {
  */
 Diagnostics.prototype.hookRobotCodeReset = function() {
   self = this;
-  $('#diagnostics form').submit(function() {
+  $('#diagnostics form').submit(function(evt) {
+    evt.preventDefault(); //revents page refresh/reload
     var val = $(this).find('input[type=radio]:checked').val();
     if (!val) {
       return;

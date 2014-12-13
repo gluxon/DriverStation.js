@@ -21,8 +21,12 @@ onload = function() {
   setup.setDSProtocol(setDriverStation(localStorage.dsProtocol));
   
   setup.on("ds_protocol_change", function (dsProtocol) {
-    states.setDisabled(); //disable robot
+    if(setDriverStation(dsProtocol, false) === Number(localStorage.dsProtocol)) { //don't change unless nessicary
+      setup.setDSProtocol(setDriverStation(dsProtocol, false)); //used to set module and snap slider
+      return;
+    }
 
+    states.setDisabled(); //disable robot
     driverstation.disconnect();
     driverstation.findTimer = null; //fix so DS can be "restarted" later
 
@@ -38,7 +42,9 @@ onload = function() {
     });
   });
 
-  function setDriverStation(dsProtocol) {
+  function setDriverStation(dsProtocol,setDS) {
+    dsProtocol = Number(dsProtocol);
+    setDS = typeof(setDS) !== 'undefined' ? setDS : true;
     switch(Number(dsProtocol)) {
       case 2009:
       case 2010:
@@ -47,11 +53,15 @@ onload = function() {
       case 2013:
       case 2014:
         dsProtocol = 2009;
-        driverstation = driverstation_legacy;
+        if(setDS) {
+          driverstation = driverstation_legacy;
+        }
         break;
       case 2015:
         dsProtocol = 2015;
-        driverstation = driverstation_2015; // TODO: Set to 2015 plugin when ready
+        if(setDS) {
+          driverstation = driverstation_2015;
+        }
         break;
       default:
         console.error("Invalid DriverStation Protocol Selected");
@@ -346,6 +356,7 @@ onload = function() {
   });
 
   diagnostics.on('resetRobotCode', function(currentlyHasCode) {
+    console.log("resetting");
     freeMemory = null;
     hasCode = currentlyHasCode;
   });
