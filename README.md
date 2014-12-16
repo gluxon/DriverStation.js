@@ -2,8 +2,9 @@
 
 An Open Source FRC Driver Station.
 
-![DriverStation.js](http://i.imgur.com/2KVvVkO.png)
-![Driverstation.js](http://i.imgur.com/G8l5MR5.png)
+![DriverStation.js](http://i.imgur.com/Rz8iTj9.png)
+![DriverStation.js](http://i.imgur.com/RFcOAJX.png)
+![DriverStation.js](http://i.imgur.com/654fPmo.png)
 
 ## Downloads
 
