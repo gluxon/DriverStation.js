@@ -9,15 +9,15 @@ An Open Source FRC Driver Station.
 
 v0.4.4
 
-**Packages**
-Packages are avalible here: [http://gustavemichel.com/OSCPDSPackages/](http://gustavemichel.com/OSCPDSPackages/).
-Package Platforms Avalible:
-Windows
-Mac
-Linux32 (NLinux32 Contains Missing libudev.so.0 Fix)
-Linux64 (NLinux64 Contains Missing libudev.so.0 Fix)
-.NW Package (All Platforms, Requires you install Node-Webkit 0.8.6)
-
+**Packages**  
+Packages are avalible here: [http://gustavemichel.com/OSCPDSPackages/](http://gustavemichel.com/OSCPDSPackages/).  
+Package Platforms Avalible:  
+Windows  
+Mac  
+Linux32 (NLinux32 Contains Missing libudev.so.0 Fix)  
+Linux64 (NLinux64 Contains Missing libudev.so.0 Fix)  
+.NW Package (All Platforms, Requires you install Node-Webkit 0.8.6)  
+  
 ## Compile from Source
 
 Compiling from source can be found in the [node-webkit documentation](https://github.com/rogerwang/node-webkit/wiki/How-to-package-and-distribute-your-apps).
