@@ -11,12 +11,11 @@ v0.4.4
 
 **Packages**  
 Packages are avalible here: [http://gustavemichel.com/OSCPDSPackages/](http://gustavemichel.com/OSCPDSPackages/).  
-Package Platforms Avalible:  
-Windows  
-Mac  
-Linux32 (NLinux32 Contains Missing libudev.so.0 Fix)  
-Linux64 (NLinux64 Contains Missing libudev.so.0 Fix)  
-.NW Package (All Platforms, Requires you install Node-Webkit 0.8.6)  
+- Windows  
+- Mac  
+- Linux32 (NLinux32 Contains Missing libudev.so.0 Fix)  
+- Linux64 (NLinux64 Contains Missing libudev.so.0 Fix)  
+- .NW Package (All Platforms, Requires you install Node-Webkit 0.8.6)  
   
 ## Compile from Source
 
