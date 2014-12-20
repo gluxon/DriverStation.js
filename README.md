@@ -43,12 +43,11 @@ $ node-pre-gyp build --runtime=node-webkit --target=0.8.6
 
 The Additional Platform Specific dependencies for compiling node natives can be found on the [node-gyp](https://github.com/TooTallNate/node-gyp#installation) github repo README.  
 
-#### Notes:
 ##### Linux
-If your system's Python 2.7 executable isn't just called `python` you can use the `--python` switch.  
+If your system's Python 2.7 executable isn't just called `python` you can use the `--python=<executable name>` flag.  
 
 ##### Windows
-This process was rather difficult, below is a step by step of what I did to complete this task (in additon to the above general instructions).  
+This process was rather difficult, taking nearly 2 weeks to resolve issues, below is a step by step of what I did to complete this task (in additon to the above general instructions).  
 Note: I started with a clean install of Windows 7 Home Premium 64-bit.  
 
 - Install [Python 2.7.3](http://www.python.org/download/releases/2.7.3#download)
@@ -58,7 +57,7 @@ Note: I started with a clean install of Windows 7 Home Premium 64-bit.
 - Install [Microsoft Visual Studio C++ 2012](http://go.microsoft.com/?linkid=9816758)
 - Run Windows Update until Service Pack I installs (Windows 7 Only)
 - Install: [Microsoft Visual Studio C++ 2013](http://go.microsoft.com/?linkid=9832280&clcid=0x409)
-- Compile Using the --msvs_version=2013 flag. (the --target_arch=ia32 flag is also required if you are running a 64-bit system)
+- Compile Using the `--msvs_version=2013` flag. (the `--target_arch=ia32` flag is also required if running a 64-bit version)
 
 
 ### Running Unpackaged
