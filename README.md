@@ -29,21 +29,37 @@ JavaScript crashing from dependency errors.
 $ npm install
 ```
 
-After installing the required dependencies, it is likely manual work will need to be done to insure a functional application.
+After installing the required dependencies, additional actions  will need to be taken to obtain a functional application.
 
 ### Compiling node-gamepad
 
 Due to node-gamepad using native files and the use of node-webkit instead of node, the pre-installed native may not work, below is the process for compiling the native from the Application Directory.
 
 ``` bash
-$ npm install -g node-gyp # May require Sudo
-$ npm install -g nw-gyp # May require Sudo
+$ npm install -g node-gyp nw-gyp node-pre-gyp # May require Sudo
 $ cd node_modules/gamepad/
-$ ./node_modules/node-pre-gyp/bin/node-pre-gyp build --runtime=node-webkit --target=0.8.6
+$ node-pre-gyp build --runtime=node-webkit --target=0.8.6
 ```
-Additional Platform Specific dependencies can be found on the [node-gyp]() github repo README.
 
-In the case of my system, I needed the --python switch to specifiy my python2.7 executable
+The Additional Platform Specific dependencies for compiling node natives can be found on the [node-gyp](https://github.com/TooTallNate/node-gyp#installation) github repo README.  
+
+#### Notes:
+##### Linux
+If your system's Python 2.7 executable isn't just called `python` you can use the `--python` switch.  
+
+##### Windows
+This process was rather difficult, below is a step by step of what I did to complete this task (in additon to the above general instructions).  
+Note: I started with a clean install of Windows 7 Home Premium 64-bit.  
+
+- Install [Python 2.7.3](http://www.python.org/download/releases/2.7.3#download)
+- Install [Microsoft Visual Studio C++ 2010](http://go.microsoft.com/?linkid=9709949)
+- Install [Windows 7 64-bit SDK](http://www.microsoft.com/en-us/download/details.aspx?id=8279)
+- Install [compiler update for the Windows SDK 7.1](http://www.microsoft.com/en-us/download/details.aspx?id=4422)
+- Install [Microsoft Visual Studio C++ 2012](http://go.microsoft.com/?linkid=9816758)
+- Run Windows Update until Service Pack I installs (Windows 7 Only)
+- Install: [Microsoft Visual Studio C++ 2013](http://go.microsoft.com/?linkid=9832280&clcid=0x409)
+- Compile Using the --msvs_version=2013 flag. (the --target_arch=ia32 flag is also required if you are running a 64-bit system)
+
 
 ### Running Unpackaged
 
@@ -55,7 +71,7 @@ $ ./node_modules/nodewebkit/nodewebkit/nw ./
 
 ### Repairing Missing libudev.so.0
 
-Since node-webkit is installed in node_modules, the sed command can be used fairly easily to correct this issue. I assume you are starting at the Application Directory.
+Since node-webkit is installed in node_modules, the sed commq and can be used fairly easily to correct this issue. I assume you are starting at the Application Directory.
 
 ``` bash
 $ cd node_modules/nodewebkit/nodewebkit/
