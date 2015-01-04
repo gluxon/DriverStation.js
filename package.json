@@ -24,7 +24,7 @@
   "main": "index.html",
   "dependencies" : {
     "nodewebkit": "0.8.6",
-    "frc-driverstation" : "0.6.x",
+    "driverstation" : "0.6.x",
     "gamepad" : "1.0.x"
   },
   "window": {
