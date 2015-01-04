@@ -16,4 +16,8 @@ function hookLinks() {
   $("#contrib_innoying").click(function() {
     gui.Shell.openExternal("https://github.com/innoying");
   });
+
+  $("#contrib_gixxy").click(function() {
+    gui.Shell.openExternal("https://github.com/gixxy");
+  });
 }

@@ -1,6 +1,6 @@
 {
   "name": "DriverStation.js",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": "Brandon Cheng <gluxon@gluxon.com>",
   "description": "An open source alternative FRC Driver Station",
   "contributors": [ 
@@ -11,15 +11,22 @@
     {
       "name": "FRC2539",
       "email": "kryptoncougars2539@gmail.com"
+    },
+    {
+      "name": "Gustave Michel III",
+      "email": "gus3@michelfamily.org"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/gluxon/node-driverstation.git"
+    "url": "https://github.com/gluxon/DriverStation.js.git"
   },
   "main": "index.html",
   "dependencies" : {
-    "driverstation" : "0.6.x"
+    "nodewebkit": "0.8.6",
+    "frc-driverstation" : "0.6.x",
+    "gamepad" : "1.0.x",
+    "keypress": "0.2.x"
   },
   "window": {
     "toolbar": false,
@@ -31,7 +38,7 @@
   },
   "license": "MPL",
   "engines": {
-    "node": ">=0.8"
+    "node": ">=0.8 <0.11",
+    "node-webkit": ">=0.8 <0.10"
   }
-
 }
